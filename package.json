@@ -4,6 +4,7 @@
   "description": "Electron (or NW.js) based desktop application for setting geotags for images",
   "main": "index.js",
   "scripts": {
+    "start": "electron index.js",
     "test": "npm run lint",
     "lint": "eslint -c .eslintrc index.js"
   },
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/paazmaya/kanigawa",
   "devDependencies": {
+    "electron-prebuilt": "^0.35.0",
     "eslint": "^1.9.0"
   }
 }
