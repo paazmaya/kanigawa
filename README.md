@@ -29,6 +29,16 @@ karate and ryukyu kobujutsu today.
 
 ## Getting started
 
+Clone or download this repository and run the following command to start the application:
+
+```sh
+npm install
+npm start
+```
+
+**Later* it should be possible to install this application globally and start it wherever
+it is common in the given platform:
+
 ```sh
 [sudo] npm install --global kanigawa
 ```

@@ -1,8 +1,7 @@
-
-
 /**
+ * Electron based desktop application for setting geotags for images
  *
- *
+ * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
 'use strict';
@@ -10,9 +9,6 @@
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
-
-//var app = require('app');  // Module to control application life.
-//var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
 // Report crashes to our server.
 require('crash-reporter').start();

@@ -1,7 +1,7 @@
 {
   "name": "kanigawa",
   "version": "0.1.0",
-  "description": "Electron (or NW.js) based desktop application for setting geotags for images",
+  "description": "Electron based desktop application for setting geotags for images",
   "main": "index.js",
   "scripts": {
     "start": "electron index.js",
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/paazmaya/kanigawa.git"
+  },
+  "engines": {
+    "node": ">=4.2.0"
   },
   "keywords": [
     "image",
@@ -26,6 +29,9 @@
   "homepage": "https://github.com/paazmaya/kanigawa",
   "devDependencies": {
     "electron-prebuilt": "^0.35.0",
-    "eslint": "^1.9.0"
+    "eslint": "^1.9.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.6"
   }
 }
