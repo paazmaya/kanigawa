@@ -7,6 +7,9 @@
 As this project/application is still being planned and investigated, it is running
 with the pre-build version of [Electron](http://electron.atom.io/).
 
+It will also be available as a web site at [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi)
+because it can. However the geotagging functionality is limited to a single image at a time.
+
 ## Why, there is Picasa from Google, right?
 
 I got so fed up with its bugs and lack of support for changes in the Google Maps API, so
@@ -36,11 +39,44 @@ npm install
 npm start
 ```
 
-**Later* it should be possible to install this application globally and start it wherever
+**Later** it should be possible to install this application globally and start it wherever
 it is common in the given platform:
 
 ```sh
 [sudo] npm install --global kanigawa
+```
+
+## Features or actually a roadmap
+
+* Open a directory recursively on the grid view
+* Drag image to a location on a map
+* Existing geotagged images in the current grid will be shown as thumbnail markers on the map
+* Image can be dragged on top of a thumbnail on the map, which places it at the same location
+* Image thumbnails on map can be shown as dimmed, while the location reuse is not available, as it is sometimes desired behaviour to avoid nearby mistakes
+* Clicking on thumbnail on a map, selects the image from the grid, but why?
+* Sort by file attributes and most common metadata properties
+* Service Worker should do the scanning of the image files and thumbnail creation
+
+### Map default centre location and zoom level
+
+* Map default centre is determined by the most used location for geotag
+* Used locations are stored locally, but with only three digits, hence the accuracy is not too discriminating
+* That inaccuracy will help approximate the location heat map and over time give much more pleasant user experience
+
+## Updating GitHub Pages
+
+There is a `gh-pages` branch that is available as [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi).
+It can be updated by running the following commands:
+
+```sh
+git checkout master
+npm run pages
+git checkout gh-pages
+mv pages/* .
+git add .
+git commit -m "Update to get version .... included"
+git push origin gh-pages
+git checkout master
 ```
 
 ## Version history
