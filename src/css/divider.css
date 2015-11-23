@@ -6,21 +6,8 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-
-html, body {
-	width: 100%;
+.divider {
+	display: block;
+	width: 1em;
 	height: 100%;
-	min-height: 100%;
-	overflow: hidden;
-	margin: 0;
-	padding: 0;
-}
-html {
-  min-height: 100%;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  min-width: 580px;
-  min-height: 100%;
 }

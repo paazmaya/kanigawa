@@ -7,9 +7,7 @@
  */
 
 
-.image-grid {
+.menubar {
 	display: flex;
 }
-.image-grid-item {
-	flex: 1 1 auto;
-}
+
