@@ -64,6 +64,11 @@ it is common in the given platform:
 * Used locations are stored locally, but with only three digits, hence the accuracy is not too discriminating
 * That inaccuracy will help approximate the location heat map and over time give much more pleasant user experience
 
+### Leap Motion
+
+Should I mention that once a proper interaction model is found, it needs to work with
+[Leap Motion](https://developer.leapmotion.com/)?
+
 ## Development
 
 [Webpack](https://webpack.github.io/) is used to compile both JavaScript and CSS bundles,
