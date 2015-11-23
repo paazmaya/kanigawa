@@ -9,29 +9,11 @@
 
 import React from 'react';
 
+import ImageGridItem from './image-grid-item.jsx';
+
 import 'css/imagegrid.css';
 
 
-
-const ImageGridItem = React.createClass({
-  propTypes: {
-  	src: React.PropTypes.string
-  },
-
-  generateAlt () {
-  	return this.props.src.replace(/\.\w+$/, '').replace(/\-/g, ' ');
-  },
-
-  render () {
-  	let alt = this.generateAlt();
-
-    return (
-    	<figure className="image-grid-item" style={ { backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
-  			<img src={ this.props.src } alt={ alt }/>
-    	</figure>
-  	);
-  }
-});
 
 const ImageGridItems = React.createClass({
   propTypes: {

@@ -7,8 +7,10 @@
 
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+
+import { DropTarget } from 'react-dnd';
 
 import 'leaflet/dist/leaflet.css';
 import 'css/map.css';
@@ -24,7 +26,54 @@ const MyMarker = ({ map, position }) => (
   </Marker>
 );
 
-const LeafMap = React.createClass({
+
+
+const spec = {
+  canDrop(props, monitor) {
+    // You can disallow drop based on props or item
+    const item = monitor.getItem();
+    console.log(item.fromPosition, props.position);
+    return true;
+  },
+
+  drop(props, monitor, component) {
+    if (monitor.didDrop()) {
+      // If you want, you can check whether some nested
+      // target already handled drop
+      return;
+    }
+
+    // Obtain the dragged item
+    const item = monitor.getItem();
+
+    // You can do something with it
+    // ChessActions.movePiece(item.fromPosition, props.position);
+
+    // You can also do nothing and return a drop result,
+    // which will be available as monitor.getDropResult()
+    // in the drag source's endDrag() method
+    return { moved: true };
+  }
+};
+
+
+/**
+ * Specifies which props to inject into your component.
+ */
+function collect(connect, monitor) {
+  return {
+    // Call this function inside render()
+    // to let React DnD handle the drag events:
+    connectDropTarget: connect.dropTarget(),
+    // You can ask the monitor about the current drag state:
+    isOver: monitor.isOver(),
+    isOverCurrent: monitor.isOver({ shallow: true }),
+    canDrop: monitor.canDrop(),
+    itemType: monitor.getItemType()
+  };
+}
+
+class LeafMap extends Component {
   render () {
     return (
       <section className="map">
@@ -38,6 +87,8 @@ const LeafMap = React.createClass({
       </section>
     );
   }
-});
+}
 
-export default LeafMap;
+//export default LeafMap;
+
+export default DropTarget('ImageGridItem', spec, collect)(LeafMap);

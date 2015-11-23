@@ -34,12 +34,12 @@ body {
 
 }
 
-.main {
+.index-view {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.content {
+.main-view {
 	display: flex;
 	flex-wrap: nowrap;
   min-height: 400px;
