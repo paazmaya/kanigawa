@@ -16,6 +16,8 @@ const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const dialog = electron.dialog; // http://electron.atom.io/docs/v0.35.0/api/dialog/
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const nativeImage = electron.nativeImage;
+
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -36,6 +38,26 @@ app.on('window-all-closed', () => {
   //}
 });
 
+
+const openDialog = function (win) {
+  let dialogOpts = {
+    title: 'Choose directory...', // String
+    defaultPath: __dirname, // String
+    filters: [], // Array
+    properties: ['openDirectory'],
+  };
+
+  dialog.showOpenDialog(win, dialogOpts, (filenames) => {
+    win.setTitle(filenames[0]);
+
+    console.log(filenames);
+    filenames.forEach((filepath) => {
+      getImages(filepath);
+    });
+  });
+
+};
+
 const getImages = function (directory) {
 
   console.log(directory);
@@ -47,38 +69,40 @@ const getImages = function (directory) {
     return isImage(file);
   });
 
-  console.log(images);
+  return images;
 };
+
+
+var img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', () => {
+
+  var electronScreen = electron.screen;
+  var size = electronScreen.getPrimaryDisplay().workAreaSize;
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({
+    icon: img,
+    width: size.width,
+    height: size.height,
+    center: true
+  });
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
+
+  let webContents = mainWindow.webContents;
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  webContents.openDevTools();
 
 
+  webContents.executeJavaScript('console.log("hello there");');
 
-  let dialogOpts = {
-    title: 'Choose directory...', // String
-    defaultPath: __dirname, // String
-    filters: [], // Array
-    properties: ['openDirectory'], //  Array - Contains which features the dialog should use, can contain openFile, openDirectory, multiSelections and createDirectory
-
-  };
-
-  dialog.showOpenDialog(mainWindow, dialogOpts, (filenames) => {
-    console.log(filenames);
-    filenames.forEach((filepath) => {
-      getImages(filepath);
-    });
-  });
-
+  // openDialog(mainWindow);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {

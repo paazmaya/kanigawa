@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
 
+![kanigawa project logo](./icon.png)
+
 As this project/application is still being planned and investigated, it is running
 with the pre-build version of [Electron](http://electron.atom.io/).
 
