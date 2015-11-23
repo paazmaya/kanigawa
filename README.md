@@ -48,6 +48,17 @@ it is common in the given platform:
 [sudo] npm install --global kanigawa
 ```
 
+Please note that `exiv2` is used for image meta data handling and because it is a native library,
+the Node.js bindings for it required some platform dependant libraries installed.
+Pick the suitable command for your environment:
+
+```sh
+brew install pkg-config exiv2 # Mac
+sudo apt-get install libexiv2 libexiv2-dev # Debian/Ubuntu
+```
+
+...or [download for Windows](http://www.exiv2.org/download.html).
+
 ## Features or actually a roadmap
 
 * Open a directory recursively on the grid view
@@ -59,6 +70,7 @@ it is common in the given platform:
 * Sort by file attributes and most common metadata properties
 * Service Worker should do the scanning of the image files and thumbnail creation
 * Use http://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
+* Use `electron.remote` to call stuff in the `mainWindow`
 
 ### Map default centre location and zoom level
 

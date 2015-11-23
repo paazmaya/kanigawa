@@ -10,7 +10,8 @@
 const fs = require('fs'),
   path = require('path');
 
-const isImage = require('is-image');
+const isImage = require('is-image'),
+  exiv2 = require('exiv2');
 
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
@@ -52,7 +53,10 @@ const openDialog = function (win) {
 
     console.log(filenames);
     filenames.forEach((filepath) => {
-      getImages(filepath);
+      let images = getImages(filepath);
+      getMetas(images, function (meta) {
+        win.
+      });
     });
   });
 
@@ -68,8 +72,31 @@ const getImages = function (directory) {
   }).filter((file) => {
     return isImage(file);
   });
-
   return images;
+};
+
+const getMeta = function (filepath, callback) {
+  let stat = fs.statSync(filepath);
+  exiv2.getImageTags(filepath, function (error, tags) {
+    if (error) {
+      console.error('Exif failed for ' + filepath);
+      console.error(error);
+    }
+    callback({
+      exif: tags,
+      name: path.basename(file),
+      size: stat.size,
+      birthtime: stat.birthtime,
+      modified: stat.mtime,
+      path: filepath
+    });
+  });
+}
+
+const getMetas = function (filelist, callback) {
+  filelist.forEach((filepath) => {
+    getMeta(filepath, callback);
+  });
 };
 
 
@@ -79,8 +106,8 @@ var img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 // initialization and is ready to create browser windows.
 app.on('ready', () => {
 
-  var electronScreen = electron.screen;
-  var size = electronScreen.getPrimaryDisplay().workAreaSize;
+  const electronScreen = electron.screen;
+  const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
