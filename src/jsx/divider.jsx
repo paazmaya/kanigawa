@@ -14,9 +14,9 @@ import 'css/divider.css';
 
 const Divider = React.createClass({
 
-	onDrag: (event) => {},
+	onDrag (event) {},
 
-  render: () => {
+  render () {
     return (
     	<div className="divider" />
   	);

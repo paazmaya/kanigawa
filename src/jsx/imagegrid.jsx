@@ -26,32 +26,59 @@ const ImageGridItem = React.createClass({
   	let alt = this.generateAlt();
 
     return (
-    	<figure className="image-grid-item">
+    	<figure className="image-grid-item" style={ { backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
   			<img src={ this.props.src } alt={ alt }/>
     	</figure>
   	);
   }
 });
 
-const ImageGrid = React.createClass({
+const ImageGridItems = React.createClass({
   propTypes: {
     items: React.PropTypes.arrayOf(
-    	React.PropTypes.shape({
-      	src: React.PropTypes.string
-    	})
-  	)
+      React.PropTypes.shape({
+        src: React.PropTypes.string
+      })
+    )
   },
 
   render () {
-  	if (!this.props.items) {
-  		return  null;
-  	}
+    if (!this.props.items) {
+      return  null;
+    }
+
+    return (
+      <div className="image-grid-items">
+        { this.props.items.map((item) => {
+          return <ImageGridItem key={ item.src } src={ item.src } />;
+        }) }
+      </div>
+    );
+  }
+});
+
+const ImageGrid = React.createClass({
+
+  render () {
+
+    let items = [
+      {
+        src: 'one.jpg'
+      },
+      {
+        src: 'two.jpg'
+      },
+      {
+        src: 'tre.jpg'
+      },
+      {
+        src: 'yon.jpg'
+      }
+    ];
 
     return (
     	<div className="image-grid">
-    		{ this.props.items.map((item) => {
-    	    return <ImageGridItem key={ item.src } src={ item.src } />;
-        }) }
+        <ImageGridItems items={ items } />
     	</div>
   	);
   }

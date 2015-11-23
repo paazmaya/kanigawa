@@ -25,15 +25,17 @@ const MyMarker = ({ map, position }) => (
 );
 
 const LeafMap = React.createClass({
-  render: () => {
+  render () {
     return (
-      <Map center={ position } zoom={ zoomLevel } id="imagemap" className="map">
-        <TileLayer
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <MyMarker position={ position } />
-      </Map>
+      <section className="map">
+        <Map center={ position } zoom={ zoomLevel } className="imagemap full-screen">
+          <TileLayer
+            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <MyMarker position={ position } />
+        </Map>
+      </section>
     );
   }
 });

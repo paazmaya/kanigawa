@@ -9,15 +9,16 @@
 
 import React from 'react';
 
-import 'css/menubar.css';
-
-
-const Menubar = React.createClass({
+const Info = React.createClass({
   render () {
     return (
-    	<div className="menubar" />
-  	);
+      <section className="info">
+        We are using node { process.versions.node },
+        Chrome { process.versions.chrome },
+        and Electron { process.versions.electron }.
+      </section>
+    );
   }
 });
 
-export default Menubar;
+export default Info;

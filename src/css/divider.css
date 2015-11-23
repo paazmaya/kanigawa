@@ -7,7 +7,8 @@
  */
 
 .divider {
+	flex: 0 0 auto;
 	display: block;
-	width: 1em;
+	width: 0.5em;
 	height: 100%;
 }
