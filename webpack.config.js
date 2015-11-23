@@ -27,7 +27,7 @@ module.exports = {
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js',
-    publicPath: 'http://localhost:9999/assets/'
+    publicPath: 'http://localhost:9981/assets/'
   },
   module: {
     loaders: [
@@ -59,6 +59,7 @@ module.exports = {
     autoprefixer({
       browsers: ['last 2 versions']
     })
+    // TODO: minify
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.css'],

@@ -9,10 +9,10 @@
     "test": "npm run lint",
     "lint": "eslint -c .eslintrc index.js",
     "pages": "npm run build && npm run move-bundle",
-    "serve": "http-server -p 8888 ./",
+    "serve": "http-server -p 9980 ./",
     "build": "webpack --config webpack.config.js --progress --optimize-minimize",
     "move-bundle": "mkdir -p pages/assets && mv build/* pages/assets/",
-    "dev": "webpack-dev-server --progress --colors --port 9999"
+    "dev": "webpack-dev-server --progress --colors --port 9981"
   },
   "repository": {
     "type": "git",

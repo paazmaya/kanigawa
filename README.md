@@ -77,6 +77,10 @@ is to use the Webpack development server locally:
 npm start
 ```
 
+This will start a [`http-server`](https://www.npmjs.com/package/http-server) at port `9980`
+and a [Webpack development server](https://www.npmjs.com/package/webpack-dev-server)
+in port `9981`.
+
 Once the changes are somewhat satisfactory, the "production" bundles can be build with the command:
 
 ```sh
