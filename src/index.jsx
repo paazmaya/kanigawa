@@ -8,4 +8,4 @@ import ImageGrid from 'jsx/imagegrid.jsx';
 
 import 'css/index.css';
 
-render(<div><LeafMap /><ImageGrid /></div>, document.getElementById('map'));
+render(<div><LeafMap /><ImageGrid /></div>, document.querySelector('.app-container'));

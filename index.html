@@ -2,15 +2,15 @@
 <html>
   <head>
     <title>Hello World!</title>
-    <link rel="stylesheet" href="http://localhost:9981/assets/bundle.css" />
+    <link rel="stylesheet" href="build/bundle.css" />
   </head>
   <body>
     <h1>Hello World!</h1>
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
-    <div id="map"></div>
+    <div class="app-container"></div>
 	  <script src="http://localhost:9981/webpack-dev-server.js"></script>
-	  <script type="text/javascript" src="http://localhost:9981/assets/bundle.js"></script>
+	  <script type="text/javascript" src="build/bundle.js"></script>
   </body>
 </html>

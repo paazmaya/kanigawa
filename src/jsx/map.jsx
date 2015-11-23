@@ -26,7 +26,7 @@ const MyMarker = ({ map, position }) => (
 const LeafMap = React.createClass({
   render: () => {
     return (
-      <Map center={ position } zoom={ zoomLevel }>
+      <Map center={ position } zoom={ zoomLevel } id="imagemap">
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
