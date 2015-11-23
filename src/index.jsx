@@ -2,9 +2,10 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import LeafMap from 'jsx/map.jsx';
+import ImageGrid from 'jsx/imagegrid.jsx';
 
-import 'css/index'
+import 'css/index.css';
 
-ReactDOM.render(<LeafMap />, document.getElementById('map'));
+render(<div><LeafMap /><ImageGrid /></div>, document.getElementById('map'));

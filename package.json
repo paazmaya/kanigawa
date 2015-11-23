@@ -8,8 +8,10 @@
     "start": "npm run serve | npm run dev",
     "test": "npm run lint",
     "lint": "eslint -c .eslintrc index.js",
-    "pages": "echo 'Shall be generating web site at some point. Not now.'",
+    "pages": "npm run build && npm run move-bundle",
     "serve": "http-server -p 8888 ./",
+    "build": "webpack --config webpack.config.js --progress --optimize-minimize",
+    "move-bundle": "mkdir -p pages/assets && mv build/* pages/assets/",
     "dev": "webpack-dev-server --progress --colors --port 9999"
   },
   "repository": {
@@ -44,6 +46,7 @@
     "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^0.9.1",
     "http-server": "^0.8.5",
+    "image-webpack-loader": "^1.6.2",
     "imports-loader": "^0.6.5",
     "leaflet": "^0.7.7",
     "postcss-loader": "^0.8.0",

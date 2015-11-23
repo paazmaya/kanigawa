@@ -36,7 +36,7 @@ Clone or download this repository and run the following command to start the app
 
 ```sh
 npm install
-npm start
+npm run start-app
 ```
 
 **Later** it should be possible to install this application globally and start it wherever
@@ -56,12 +56,41 @@ it is common in the given platform:
 * Clicking on thumbnail on a map, selects the image from the grid, but why?
 * Sort by file attributes and most common metadata properties
 * Service Worker should do the scanning of the image files and thumbnail creation
+* Use http://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
 
 ### Map default centre location and zoom level
 
 * Map default centre is determined by the most used location for geotag
 * Used locations are stored locally, but with only three digits, hence the accuracy is not too discriminating
 * That inaccuracy will help approximate the location heat map and over time give much more pleasant user experience
+
+## Development
+
+[Webpack](https://webpack.github.io/) is used to compile both JavaScript and CSS bundles,
+so that all the code needed for [React.js](http://facebook.github.io/react/)
+and others are included in a single file.
+
+During development, the easier way to make changes on the user interface and see the results,
+is to use the Webpack development server locally:
+
+```sh
+npm start
+```
+
+Once the changes are somewhat satisfactory, the "production" bundles can be build with the command:
+
+```sh
+npm run build
+```
+
+and tested by running the Electron application:
+
+```sh
+npm run start-app
+```
+
+Electron accepts some [command line options to be passed on Chrome](https://github.com/atom/electron/blob/master/docs/api/chrome-command-line-switches.md),
+which can be seen with `chrome --js-flags="--help"` command.
 
 ## Updating GitHub Pages
 
@@ -70,7 +99,7 @@ It can be updated by running the following commands:
 
 ```sh
 git checkout master
-npm run pages
+npm run pages # will run 'npm run build' and 'npm run move-bundle'
 git checkout gh-pages
 mv pages/* .
 git add .

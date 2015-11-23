@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.image-grid {
+	display: flex;
+}
+.image-grid-item {
+	flex: 1 1 auto;
+}
