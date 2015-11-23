@@ -10,8 +10,11 @@
 const fs = require('fs'),
   path = require('path');
 
+const isImage = require('is-image');
+
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
+const dialog = electron.dialog; // http://electron.atom.io/docs/v0.35.0/api/dialog/
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
 // Report crashes to our server.
@@ -33,8 +36,19 @@ app.on('window-all-closed', () => {
   //}
 });
 
+const getImages = function (directory) {
 
+  console.log(directory);
+  var files = fs.readdirSync(directory);
 
+  var images = files.map((file) => {
+    return path.join(directory, file);
+  }).filter((file) => {
+    return isImage(file);
+  });
+
+  console.log(images);
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -47,6 +61,24 @@ app.on('ready', () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+
+
+  let dialogOpts = {
+    title: 'Choose directory...', // String
+    defaultPath: __dirname, // String
+    filters: [], // Array
+    properties: ['openDirectory'], //  Array - Contains which features the dialog should use, can contain openFile, openDirectory, multiSelections and createDirectory
+
+  };
+
+  dialog.showOpenDialog(mainWindow, dialogOpts, (filenames) => {
+    console.log(filenames);
+    filenames.forEach((filepath) => {
+      getImages(filepath);
+    });
+  });
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
