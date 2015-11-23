@@ -69,6 +69,12 @@ it is common in the given platform:
 Should I mention that once a proper interaction model is found, it needs to work with
 [Leap Motion](https://developer.leapmotion.com/)?
 
+### Voice command locations
+
+* Choose images
+* Use voice command to specify saved location, such as "home" or "clear"
+* Profit.
+
 ## Development
 
 [Webpack](https://webpack.github.io/) is used to compile both JavaScript and CSS bundles,
