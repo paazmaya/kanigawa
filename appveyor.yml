@@ -1,0 +1,26 @@
+environment:
+  matrix:
+	  - nodejs_version: "4.2"
+	  - nodejs_version: "5"
+
+platform:
+  - x86
+  - x64
+
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  - npm install
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
+
+matrix:
+  fast_finish: true
