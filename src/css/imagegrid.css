@@ -11,7 +11,7 @@
 	flex: 0 1 50%;
 }
 
-.image-grid-items {
+.image-grid-list {
 	display: flex;
 	flex-wrap: wrap;
 }

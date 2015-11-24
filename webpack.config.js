@@ -19,10 +19,7 @@ const ROOT_PATH = path.resolve(__dirname),
   BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
-  //entry: APP_PATH,
-  entry: {
-    app: ['./src/index']
-  },
+  entry: APP_PATH,
   // devtool: 'source-map',
   output: {
     path: BUILD_PATH,
@@ -53,7 +50,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('bundle.css')
+    new ExtractTextPlugin('bundle.css'),
+    new webpack.ProvidePlugin({
+      Tinbe: 'Tinbe'
+    })
   ],
   postcss: [
     autoprefixer({

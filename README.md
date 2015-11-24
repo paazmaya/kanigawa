@@ -72,6 +72,8 @@ sudo apt-get install libexiv2 libexiv2-dev # Debian/Ubuntu
 * Service Worker should do the scanning of the image files and thumbnail creation
 * Use http://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
 * Use `electron.remote` to call stuff in the `mainWindow`
+* Or communicate via `open-url` event so that the React application works as a regular web site
+* Well the `open-url` did not do it, but `app.interceptHttpProtocol` shall be.
 
 ### Map default centre location and zoom level
 

@@ -21,7 +21,10 @@ class ImageGridList extends Component {
     return (
       <div className="image-grid-list">
         { this.props.items.map((item) => {
-          return <ImageGridItem key={ item.src } src={ item.src } />;
+          return (
+            <ImageGridItem key={ item.src }
+              src={ item.src } />
+          );
         }) }
       </div>
     );

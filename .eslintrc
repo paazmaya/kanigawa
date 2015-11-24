@@ -236,6 +236,7 @@
     "jsx": true
   },
   "globals": {
-    "document": false
+    "document": false,
+    "Tinbe": true
   }
 }

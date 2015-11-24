@@ -14,8 +14,6 @@ import MainView from 'jsx/main-view.jsx';
 
 import 'css/index.css';
 
-// var remote = require('electron').remote;
-
 render((
 	<div className="index-view full-screen">
 		<Menubar />

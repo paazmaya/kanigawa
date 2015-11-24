@@ -25,7 +25,8 @@ require('crash-reporter').start();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow = null;
+let mainWindow = null,
+  webContents = null;
 
 // app.commandLine.appendSwitch('enable-some-feature', true);
 
@@ -80,9 +81,9 @@ const getMetas = (filelist, callback) => {
 
 const openDialog = (win) => {
   const dialogOpts = {
-    title: 'Choose directory...', // String
-    defaultPath: __dirname, // String
-    filters: [], // Array
+    title: 'Choose directory...',
+    defaultPath: __dirname,
+    filters: [],
     properties: ['openDirectory']
   };
 
@@ -95,7 +96,8 @@ const openDialog = (win) => {
 
       getMetas(images, (meta) => {
         // Somehow pass the meta to the window and React application..
-        // win.
+        console.log(meta);
+        webContents.send('image-meta', meta);
       });
     });
   });
@@ -119,19 +121,51 @@ app.on('ready', () => {
     center: true
   });
 
+  const protocol = electron.protocol;
+
+app.on('open-url', (event, url) => {
+  event.preventDefault();
+  console.log('open-url occurred. url: ' + url);
+});
+
+  protocol.interceptHttpProtocol('http', (request, callback) => {
+
+    // In case the URL is to a domain "kanigawa", then handle it.
+    // Otherwise just pass through.
+
+
+    if (request.url.indexOf('http://kanigawa/') !== -1) {
+      // Do your magic
+      console.log('You want kanigawa specific contents');
+      if (request.url === 'http://kanigawa/choose-directory') {
+        openDialog(mainWindow);
+      }
+    }
+    else {
+      console.log(request);
+      request.session = null;
+      return callback(request);
+    }
+  }, (error) => {
+    if (error) {
+      console.error('Failed to register intercepting HTTP protocol');
+    }
+  });
+
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${ __dirname }/index.html`);
 
 
-  const webContents = mainWindow.webContents;
+  webContents = mainWindow.webContents;
 
   // Open the DevTools.
   webContents.openDevTools();
 
+  webContents.on('did-finish-load', function () {
+    webContents.send('ping', {some: 'whoooooooh!'} );
+  });
 
   webContents.executeJavaScript('console.log("hello there");');
-
-  // openDialog(mainWindow);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {

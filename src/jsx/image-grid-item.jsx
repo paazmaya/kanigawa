@@ -43,7 +43,7 @@ const imageSource = {
 /**
  * Specifies the props to inject into your component.
  */
-function collect(connect, monitor) {
+function collect (connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
@@ -56,7 +56,6 @@ class ImageGridItem extends Component {
   }
 
   render () {
-
     const alt = this.generateAlt();
 
     return this.props.connectDragSource(
