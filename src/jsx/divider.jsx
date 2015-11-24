@@ -5,23 +5,21 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-'use strict';
-
 import React, { Component } from 'react';
 
 import 'css/divider.css';
 
 class Divider extends Component {
 
-	onDrag (event) {
+  onDrag (event) {
 
-	},
+  }
 
   render () {
     return (
-    	<div className="divider" />
-  	);
+      <div className="divider" />
+    );
   }
-});
+}
 
 export default Divider;

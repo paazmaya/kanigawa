@@ -12,13 +12,13 @@ import { DragSource } from 'react-dnd';
  * Implements the drag source contract.
  */
 const imageSource = {
-  beginDrag(props) {
+  beginDrag (props) {
     return {
       src: props.src
     };
   },
 
-  isDragging(props, monitor) {
+  isDragging (props, monitor) {
     // If your component gets unmounted while dragged
     // (like a card in Kanban board dragged between lists)
     // you can implement something like this to keep its
@@ -26,7 +26,7 @@ const imageSource = {
     return monitor.getItem().src === props.src;
   },
 
-  endDrag(props, monitor, component) {
+  endDrag (props, monitor, component) {
     if (!monitor.didDrop()) {
       return;
     }

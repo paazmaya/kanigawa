@@ -40,28 +40,6 @@ app.on('window-all-closed', () => {
 });
 
 
-const openDialog = (win) => {
-  const dialogOpts = {
-    title: 'Choose directory...', // String
-    defaultPath: __dirname, // String
-    filters: [], // Array
-    properties: ['openDirectory']
-  };
-
-  dialog.showOpenDialog(win, dialogOpts, (filenames) => {
-    win.setTitle(filenames[0]);
-
-    console.log(filenames);
-    filenames.forEach((filepath) => {
-      const images = getImages(filepath);
-
-      getMetas(images, (meta) => {
-        // win.
-      });
-    });
-  });
-};
-
 const getImages = (directory) => {
 
   console.log(directory);
@@ -100,6 +78,28 @@ const getMetas = (filelist, callback) => {
   });
 };
 
+const openDialog = (win) => {
+  const dialogOpts = {
+    title: 'Choose directory...', // String
+    defaultPath: __dirname, // String
+    filters: [], // Array
+    properties: ['openDirectory']
+  };
+
+  dialog.showOpenDialog(win, dialogOpts, (filenames) => {
+    win.setTitle(filenames[0]);
+
+    console.log(filenames);
+    filenames.forEach((filepath) => {
+      const images = getImages(filepath);
+
+      getMetas(images, (meta) => {
+        // win.
+      });
+    });
+  });
+};
+
 
 const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
@@ -107,7 +107,6 @@ const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 // initialization and is ready to create browser windows.
 
 app.on('ready', () => {
-
   const electronScreen = electron.screen,
     size = electronScreen.getPrimaryDisplay().workAreaSize;
 

@@ -15,7 +15,7 @@ class ImageGridList extends Component {
 
   render () {
     if (!this.props.items) {
-      return  null;
+      return null;
     }
 
     return (

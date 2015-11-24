@@ -6,16 +6,13 @@
  */
 
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import { DropTarget } from 'react-dnd';
 
 import 'leaflet/dist/leaflet.css';
 import 'css/map.css';
-
-const position = [51.505, -0.09],
-  zoomLevel = 13;
 
 const MyMarker = ({ map, position }) => (
   <Marker map={ map } position={ position }>
@@ -25,21 +22,19 @@ const MyMarker = ({ map, position }) => (
   </Marker>
 );
 
-
-
 const spec = {
-  canDrop(props, monitor) {
+  canDrop (props, monitor) {
     // You can disallow drop based on props or item
     const item = monitor.getItem();
     console.log(item.fromPosition, props.position);
     return true;
   },
 
-  drop(props, monitor, component) {
+  drop (props, monitor, component) {
     if (monitor.didDrop()) {
       // If you want, you can check whether some nested
       // target already handled drop
-      return;
+      return false;
     }
 
     // Obtain the dragged item
@@ -59,7 +54,7 @@ const spec = {
 /**
  * Specifies which props to inject into your component.
  */
-function collect(connect, monitor) {
+function collect (connect, monitor) {
   return {
     // Call this function inside render()
     // to let React DnD handle the drag events:
@@ -76,9 +71,9 @@ class LeafMap extends Component {
   render () {
     return (
       <section className="map">
-        <Map center={ position } zoom={ zoomLevel } className="imagemap full-screen">
+        <Map center={ this.props.position } zoom={ this.props.zoomLevel } className="imagemap full-screen">
           <TileLayer
-            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
           <MyMarker position={ position } />
@@ -87,6 +82,12 @@ class LeafMap extends Component {
     );
   }
 }
+
+LeafMap.propTypes = {
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoomLevel: PropTypes.number.isRequired
+};
+
 
 //export default LeafMap;
 
