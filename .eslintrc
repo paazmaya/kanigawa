@@ -152,7 +152,7 @@
     "no-void": 2,
     "no-warning-comments": 1,
     "no-with": 2,
-    "object-curly-spacing": [2, "never"],
+    "object-curly-spacing": [1, "never"],
     "object-shorthand": 1,
     "one-var": 0,
     "operator-assignment": [2, "always"],
@@ -226,7 +226,12 @@
   "plugins": [
     "react"
   ],
+  "parser": "babel-eslint",
   "ecmaFeatures": {
+    "arrowFunctions": true,
+    "classes": true,
+    "modules": true,
+    "templateStrings": true,
     "jsx": true
   },
   "globals": {

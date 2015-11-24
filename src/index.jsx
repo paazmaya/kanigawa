@@ -1,3 +1,9 @@
+/**
+ * Electron based desktop application for setting geotags for images
+ *
+ * Licensed under the MIT license
+ * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
+ */
 
 'use strict';
 
@@ -13,7 +19,7 @@ import MainView from 'jsx/main-view.jsx';
 
 import 'css/index.css';
 
-var remote = require('electron').remote;
+// var remote = require('electron').remote;
 
 render((
 	<div className="index-view full-screen">

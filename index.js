@@ -40,12 +40,12 @@ app.on('window-all-closed', () => {
 });
 
 
-const openDialog = function (win) {
-  let dialogOpts = {
+const openDialog = (win) => {
+  const dialogOpts = {
     title: 'Choose directory...', // String
     defaultPath: __dirname, // String
     filters: [], // Array
-    properties: ['openDirectory'],
+    properties: ['openDirectory']
   };
 
   dialog.showOpenDialog(win, dialogOpts, (filenames) => {
@@ -53,61 +53,63 @@ const openDialog = function (win) {
 
     console.log(filenames);
     filenames.forEach((filepath) => {
-      let images = getImages(filepath);
-      getMetas(images, function (meta) {
-        win.
+      const images = getImages(filepath);
+
+      getMetas(images, (meta) => {
+        // win.
       });
     });
   });
-
 };
 
-const getImages = function (directory) {
+const getImages = (directory) => {
 
   console.log(directory);
-  var files = fs.readdirSync(directory);
+  const files = fs.readdirSync(directory);
 
-  var images = files.map((file) => {
+  let images = files.map((file) => {
     return path.join(directory, file);
   }).filter((file) => {
     return isImage(file);
   });
+
   return images;
 };
 
-const getMeta = function (filepath, callback) {
-  let stat = fs.statSync(filepath);
-  exiv2.getImageTags(filepath, function (error, tags) {
+const getMeta = (filepath, callback) => {
+  const stat = fs.statSync(filepath);
+  exiv2.getImageTags(filepath, (error, tags) => {
     if (error) {
       console.error('Exif failed for ' + filepath);
       console.error(error);
     }
     callback({
       exif: tags,
-      name: path.basename(file),
+      name: path.basename(filepath),
       size: stat.size,
       birthtime: stat.birthtime,
       modified: stat.mtime,
       path: filepath
     });
   });
-}
+};
 
-const getMetas = function (filelist, callback) {
+const getMetas = (filelist, callback) => {
   filelist.forEach((filepath) => {
     getMeta(filepath, callback);
   });
 };
 
 
-var img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
+const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
+
 app.on('ready', () => {
 
-  const electronScreen = electron.screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
+  const electronScreen = electron.screen,
+    size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -118,10 +120,10 @@ app.on('ready', () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL(`file://${ __dirname }/index.html`);
 
 
-  let webContents = mainWindow.webContents;
+  const webContents = mainWindow.webContents;
 
   // Open the DevTools.
   webContents.openDevTools();

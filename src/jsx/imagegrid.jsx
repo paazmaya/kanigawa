@@ -14,7 +14,6 @@ import ImageGridItem from './image-grid-item.jsx';
 import 'css/imagegrid.css';
 
 
-
 const ImageGridItems = React.createClass({
   propTypes: {
     items: React.PropTypes.arrayOf(
@@ -59,10 +58,10 @@ const ImageGrid = React.createClass({
     ];
 
     return (
-    	<div className="image-grid">
+      <div className="image-grid">
         <ImageGridItems items={ items } />
-    	</div>
-  	);
+      </div>
+    );
   }
 });
 

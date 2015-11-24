@@ -7,7 +7,7 @@
     "start-app": "electron index.js",
     "start": "npm run serve | npm run dev",
     "test": "npm run lint",
-    "lint": "eslint -c .eslintrc index.js",
+    "lint": "eslint -c .eslintrc index.js src/*.jsx",
     "pages": "npm run build && npm run move-bundle",
     "serve": "http-server -p 9980 ./",
     "build": "webpack --config webpack.config.js --progress --optimize-minimize",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "autoprefixer": "^6.1.1",
     "babel-core": "^6.2.1",
+    "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
