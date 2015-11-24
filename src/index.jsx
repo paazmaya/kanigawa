@@ -5,13 +5,8 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-'use strict';
-
 import React from 'react';
 import { render } from 'react-dom';
-
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
 
 import Menubar from 'jsx/menubar.jsx';
 import Info from 'jsx/info.jsx';

@@ -57,11 +57,13 @@ class ImageGridItem extends Component {
 
   render () {
 
-    let alt = this.generateAlt();
+    const alt = this.generateAlt();
 
     return this.props.connectDragSource(
-      <figure className="image-grid-item" style={ { opacity: this.props.isDragging ? 0.5 : 1, backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
-        <img src={ this.props.src } alt={ alt }/>
+      <figure className="image-grid-item"
+        style={ { opacity: this.props.isDragging ? 0.5 : 1, backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
+        <img src={ this.props.src }
+          alt={ alt }/>
       </figure>
     );
   }

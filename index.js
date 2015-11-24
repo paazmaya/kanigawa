@@ -41,11 +41,10 @@ app.on('window-all-closed', () => {
 
 
 const getImages = (directory) => {
-
   console.log(directory);
   const files = fs.readdirSync(directory);
 
-  let images = files.map((file) => {
+  const images = files.map((file) => {
     return path.join(directory, file);
   }).filter((file) => {
     return isImage(file);
@@ -56,6 +55,7 @@ const getImages = (directory) => {
 
 const getMeta = (filepath, callback) => {
   const stat = fs.statSync(filepath);
+
   exiv2.getImageTags(filepath, (error, tags) => {
     if (error) {
       console.error('Exif failed for ' + filepath);
@@ -94,6 +94,7 @@ const openDialog = (win) => {
       const images = getImages(filepath);
 
       getMetas(images, (meta) => {
+        // Somehow pass the meta to the window and React application..
         // win.
       });
     });

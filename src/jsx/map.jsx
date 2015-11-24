@@ -71,12 +71,13 @@ class LeafMap extends Component {
   render () {
     return (
       <section className="map">
-        <Map center={ this.props.position } zoom={ this.props.zoomLevel } className="imagemap full-screen">
+        <Map center={ this.props.position }
+          zoom={ this.props.zoomLevel }
+          className="imagemap full-screen">
           <TileLayer
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <MyMarker position={ position } />
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+          <MyMarker position={ this.props.position } />
         </Map>
       </section>
     );
