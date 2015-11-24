@@ -5,40 +5,13 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-'use strict';
+import React, { Component, PropTypes } from 'react';
 
-import React from 'react';
-
-import ImageGridItem from './image-grid-item.jsx';
+import ImageGridList from './image-grid-list.jsx';
 
 import 'css/imagegrid.css';
 
-
-const ImageGridItems = React.createClass({
-  propTypes: {
-    items: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        src: React.PropTypes.string
-      })
-    )
-  },
-
-  render () {
-    if (!this.props.items) {
-      return  null;
-    }
-
-    return (
-      <div className="image-grid-items">
-        { this.props.items.map((item) => {
-          return <ImageGridItem key={ item.src } src={ item.src } />;
-        }) }
-      </div>
-    );
-  }
-});
-
-const ImageGrid = React.createClass({
+class ImageGrid extends Component {
 
   render () {
 
@@ -59,10 +32,10 @@ const ImageGrid = React.createClass({
 
     return (
       <div className="image-grid">
-        <ImageGridItems items={ items } />
+        <ImageGridList items={ items } />
       </div>
     );
   }
-});
+}
 
 export default ImageGrid;

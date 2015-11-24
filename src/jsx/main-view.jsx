@@ -1,5 +1,10 @@
+/**
+ * Electron based desktop application for setting geotags for images
+ *
+ * Licensed under the MIT license
+ * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
+ */
 
-'use strict';
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
@@ -16,12 +21,12 @@ class MainView extends Component {
 
   render () {
     return (
-			<div className="main-view full-screen">
-				<ImageGrid />
-				<Divider />
-				<LeafMap />
-			</div>
-  	);
+      <div className="main-view full-screen">
+        <ImageGrid />
+        <Divider />
+        <LeafMap />
+      </div>
+    );
   }
 }
 

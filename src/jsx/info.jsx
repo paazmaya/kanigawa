@@ -5,11 +5,9 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-'use strict';
+import React, { Component } from 'react';
 
-import React from 'react';
-
-const Info = React.createClass({
+class Info extends Component {
   render () {
     return (
       <section className="info">
@@ -19,6 +17,6 @@ const Info = React.createClass({
       </section>
     );
   }
-});
+}
 
 export default Info;

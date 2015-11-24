@@ -7,14 +7,15 @@
 
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 
 import 'css/divider.css';
 
+class Divider extends Component {
 
-const Divider = React.createClass({
+	onDrag (event) {
 
-	onDrag (event) {},
+	},
 
   render () {
     return (

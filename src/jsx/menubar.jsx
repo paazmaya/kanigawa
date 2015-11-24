@@ -5,19 +5,16 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 
 import 'css/menubar.css';
 
-
-const Menubar = React.createClass({
+class Menubar extends Component {
   render () {
     return (
-    	<div className="menubar" />
-  	);
+      <div className="menubar" />
+    );
   }
-});
+}
 
 export default Menubar;

@@ -1,3 +1,9 @@
+/**
+ * Electron based desktop application for setting geotags for images
+ *
+ * Licensed under the MIT license
+ * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
+ */
 
 import React, { Component, PropTypes } from 'react';
 import { DragSource } from 'react-dnd';
@@ -46,18 +52,18 @@ function collect(connect, monitor) {
 
 class ImageGridItem extends Component {
   generateAlt () {
-  	return this.props.src.replace(/\.\w+$/, '').replace(/\-/g, ' ');
+    return this.props.src.replace(/\.\w+$/, '').replace(/\-/g, ' ');
   }
 
   render () {
 
-  	let alt = this.generateAlt();
+    let alt = this.generateAlt();
 
     return this.props.connectDragSource(
-    	<figure className="image-grid-item" style={ { opacity: this.props.isDragging ? 0.5 : 1, backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
-  			<img src={ this.props.src } alt={ alt }/>
-    	</figure>
-  	);
+      <figure className="image-grid-item" style={ { opacity: this.props.isDragging ? 0.5 : 1, backgroundColor: '#' + parseInt(Math.random() * 255, 16) } }>
+        <img src={ this.props.src } alt={ alt }/>
+      </figure>
+    );
   }
 }
 
