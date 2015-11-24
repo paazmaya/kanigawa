@@ -3,6 +3,7 @@
 > Electron based desktop application for setting geotags for images
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/github/paazmaya/kanigawa?branch=master&svg=true)](http://www.appveyor.com/)
 
 ![kanigawa project logo](./icon.png)
 
