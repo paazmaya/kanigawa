@@ -7,7 +7,7 @@
     "start-app": "electron index.js",
     "start": "npm run serve | npm run dev",
     "test": "npm run lint",
-    "lint": "eslint -c .eslintrc index.js src/*.jsx src/jsx/*.jsx",
+    "lint": "eslint -c .eslintrc.json index.js src/*.jsx src/jsx/*.jsx",
     "pages": "npm run build && npm run move-bundle",
     "serve": "http-server -p 9980 ./",
     "build": "webpack --config webpack.config.js --progress --optimize-minimize",
