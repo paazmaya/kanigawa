@@ -124,9 +124,10 @@ npm run start-app
 Electron accepts some [command line options to be passed on Chrome](https://github.com/atom/electron/blob/master/docs/api/chrome-command-line-switches.md),
 which can be seen with `chrome --js-flags="--help"` command.
 
-## Updating GitHub Pages
+## Updating [GitHub Pages](https://pages.github.com/)
 
-There is a `gh-pages` branch that is available as [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi).
+There is a special `gh-pages` branch which becomes available as
+[kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi).
 It can be updated by running the following commands:
 
 ```sh

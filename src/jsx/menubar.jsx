@@ -10,9 +10,27 @@ import React, { Component } from 'react';
 import 'css/menubar.css';
 
 class Menubar extends Component {
+  onChooseDirClick (event) {
+    event.preventDefault();
+
+    const headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+
+    fetch(event.target.href, {headers: headers, mode: 'no-cors'}).then((data) => {
+      console.log(data);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
   render () {
     return (
-      <div className="menubar" />
+      <div className="menubar">
+        <a href="kanigawa://choose-directory"
+          onClick={ this.onChooseDirClick }
+          >Choose a directory</a>
+      </div>
     );
   }
 }

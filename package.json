@@ -2,14 +2,14 @@
   "name": "kanigawa",
   "version": "0.1.0",
   "description": "Electron based desktop application for setting geotags for images",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start-app": "electron index.js",
+    "start-app": "electron server.js",
     "start": "npm run serve | npm run dev",
     "test": "npm run lint",
     "lint": "eslint -c .eslintrc.json index.js src/*.jsx src/jsx/*.jsx",
     "pages": "npm run build && npm run move-bundle",
-    "serve": "http-server -p 9980 ./",
+    "serve": "http-server -p 9980 --ssl --cert certificates/server.crt --key certificates/server.key ./",
     "build": "webpack --config webpack.config.js --progress --optimize-minimize",
     "move-bundle": "mkdir -p pages/assets && mv build/* pages/assets/",
     "dev": "webpack-dev-server --progress --colors --port 9981"

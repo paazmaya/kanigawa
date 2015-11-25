@@ -5,22 +5,15 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-
 import React, { Component, PropTypes } from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 
 import { DropTarget } from 'react-dnd';
 
+import MapMarker from './map-marker.jsx';
+
 import 'leaflet/dist/leaflet.css';
 import 'css/map.css';
-
-const MyMarker = ({ map, position }) => (
-  <Marker map={ map } position={ position }>
-    <Popup>
-      <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-    </Popup>
-  </Marker>
-);
 
 const spec = {
   canDrop (props, monitor) {
@@ -77,7 +70,7 @@ class LeafMap extends Component {
           <TileLayer
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-          <MyMarker position={ this.props.position } />
+          <MapMarker position={ this.props.position } />
         </Map>
       </section>
     );

@@ -66,8 +66,8 @@ const getMeta = (filepath, callback) => {
       exif: tags,
       name: path.basename(filepath),
       size: stat.size,
-      birthtime: stat.birthtime,
-      modified: stat.mtime,
+      birthtime: stat.birthtime.toISOString(),
+      modified: stat.mtime.toISOString(),
       path: filepath
     });
   });
@@ -79,7 +79,7 @@ const getMetas = (filelist, callback) => {
   });
 };
 
-const openDialog = (win) => {
+const openDialog = (win, callback) => {
   const dialogOpts = {
     title: 'Choose directory...',
     defaultPath: __dirname,
@@ -97,13 +97,15 @@ const openDialog = (win) => {
       getMetas(images, (meta) => {
         // Somehow pass the meta to the window and React application..
         console.log(meta);
-        webContents.send('image-meta', meta);
+        let data = JSON.stringify({images: meta});
+        callback({mimeType: 'application/json', data: data, length: data.length});
+        //webContents.send('image-meta', meta);
       });
     });
   });
 };
 
-
+let protocol = null;
 const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
 // This method will be called when Electron has finished
@@ -121,34 +123,23 @@ app.on('ready', () => {
     center: true
   });
 
-  const protocol = electron.protocol;
+  protocol = electron.protocol;
 
-app.on('open-url', (event, url) => {
-  event.preventDefault();
-  console.log('open-url occurred. url: ' + url);
-});
-
-  protocol.interceptHttpProtocol('http', (request, callback) => {
+  protocol.registerStringProtocol('file', (request, callback) => {
 
     // In case the URL is to a domain "kanigawa", then handle it.
     // Otherwise just pass through.
+    console.log(request);
+    // Do your magic
+    console.log('You want kanigawa specific contents');
+    //if (request.url === 'http://kanigawa/choose-directory') {
+      openDialog(mainWindow, callback);
+    //}
 
-
-    if (request.url.indexOf('http://kanigawa/') !== -1) {
-      // Do your magic
-      console.log('You want kanigawa specific contents');
-      if (request.url === 'http://kanigawa/choose-directory') {
-        openDialog(mainWindow);
-      }
-    }
-    else {
-      console.log(request);
-      request.session = null;
-      return callback(request);
-    }
   }, (error) => {
     if (error) {
-      console.error('Failed to register intercepting HTTP protocol');
+      console.error('Failed to register "kanigawa" protocol');
+      console.error(error);
     }
   });
 

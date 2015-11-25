@@ -6,23 +6,9 @@
   </head>
   <body>
 
-  <a href="http://kanigawa/choose-directory">try it</a>
     <div class="app-container full-screen"></div>
 
 	  <script src="http://localhost:9981/webpack-dev-server.js"></script>
 	  <script type="text/javascript" src="build/bundle.js"></script>
-    <script>
-      // var remote = require('electron').remote;
-
-      var ipc = require('electron').ipcRenderer;
-
-      ipc.on('ping', function (event, message) {
-        console.log(event);
-        console.log(message.some);  // Prints "whoooooooh!"
-      });
-      ipc.on('image-meta', function (event, data) {
-        window.Tinbe.images.push(data);
-      });
-    </script>
   </body>
 </html>
