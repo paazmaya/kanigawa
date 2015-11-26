@@ -125,20 +125,27 @@ app.on('ready', () => {
 
   protocol = electron.protocol;
 
-  protocol.registerStringProtocol('file', (request, callback) => {
+  protocol.interceptHttpProtocol('http', (request, callback) => {
 
     // In case the URL is to a domain "kanigawa", then handle it.
     // Otherwise just pass through.
-    console.log(request);
-    // Do your magic
-    console.log('You want kanigawa specific contents');
-    //if (request.url === 'http://kanigawa/choose-directory') {
-      openDialog(mainWindow, callback);
-    //}
 
+
+    if (request.url.indexOf('http://kanigawa/') !== -1) {
+      // Do your magic
+      console.log('You want kanigawa specific contents');
+      if (request.url === 'http://kanigawa/choose-directory') {
+        openDialog(mainWindow, callback);
+      }
+    }
+    else {
+      console.log(request);
+      request.session = null;
+      return callback(request);
+    }
   }, (error) => {
     if (error) {
-      console.error('Failed to register "kanigawa" protocol');
+      console.error('Failed to register intercepting HTTP protocol');
       console.error(error);
     }
   });

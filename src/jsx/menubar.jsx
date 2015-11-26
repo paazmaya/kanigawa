@@ -27,7 +27,7 @@ class Menubar extends Component {
   render () {
     return (
       <div className="menubar">
-        <a href="kanigawa://choose-directory"
+        <a href="http://kanigawa/choose-directory"
           onClick={ this.onChooseDirClick }
           >Choose a directory</a>
       </div>
