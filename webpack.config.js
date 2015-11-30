@@ -20,7 +20,7 @@ const ROOT_PATH = path.resolve(__dirname),
 
 module.exports = {
   entry: APP_PATH,
-  // devtool: 'source-map',
+  devtool: 'source-map',
   output: {
     path: BUILD_PATH,
     filename: 'bundle.js',
@@ -30,7 +30,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015']
