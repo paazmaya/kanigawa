@@ -9,6 +9,7 @@
 
 .image-grid {
 	flex: 0 1 50%;
+	background-color: mediumvioletred;
 }
 
 .image-grid-list {
@@ -19,9 +20,12 @@
 .image-grid-item {
 	flex: 0 0 6em;
 	margin: 0;
-	padding: 0.5em;
+	padding: 0.1em;
 	height: 6em;
-	background-color: mediumvioletred;
+}
+
+.image-grid-item-dragging {
+	opacity: 0.5;
 }
 
 .image-grid-image {

@@ -22,8 +22,9 @@ class ImageGridList extends Component {
       <div className="image-grid-list">
         { this.props.items.map((item) => {
           return (
-            <ImageGridItem key={ item.src }
-              src={ item.src } />
+            <ImageGridItem key={ item.id }
+              id={ item.id }
+              alt={ item.alt } />
           );
         }) }
       </div>
@@ -34,7 +35,8 @@ class ImageGridList extends Component {
 ImageGridList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      src: PropTypes.string
+      id: PropTypes.number,
+      alt: PropTypes.string
     })
   )
 };

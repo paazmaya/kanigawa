@@ -68,19 +68,22 @@ const targetSpecification = {
   /**
    * Called when an item is hovered over the component
    *
-   * @param {object} props
+   * @param {object} props Properties of LeafMap
    * @param {DropTargetMonitor} monitor
    * @param {LeafMap|undefined} component
    */
   hover (props, monitor, component) {
     const map = component.refs.leafMap.getLeafletElement(),
-      marker = component.refs.previewMarker;
+      offset = monitor.getClientOffset(),
+      rect = component.refs.mapthing.getBoundingClientRect();
 
-    console.log(monitor.getSourceClientOffset());
-    let point = map.containerPointToLatLng([5,8]);
-    console.log(point);
+    const pos = [
+      offset.x - rect.left,
+      offset.y - rect.top
+    ];
+
+    const point = map.containerPointToLatLng(pos);
     component.setState({previewPosition: point});
-
   }
 };
 
@@ -89,6 +92,7 @@ const targetSpecification = {
  *
  * @param {DropTargetConnector} connect
  * @param {DropTargetMonitor} monitor
+ * @see https://gaearon.github.io/react-dnd/docs-drop-target-connector.html
  */
 function collect (connect, monitor) {
 
@@ -106,26 +110,31 @@ function collect (connect, monitor) {
 
 class LeafMap extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     // getInitialState equivalent
     this.state = {previewPosition: null};
   }
 
+  onDragOver (event) {
+    console.log(event);
+  }
+
   render () {
     return this.props.connectDropTarget(
       <section className="map-section">
-        <Map center={ this.props.position }
-          ref="leafMap"
-          zoom={ this.props.zoomLevel }
-          className="imagemap full-screen">
-          <TileLayer
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-          <MapMarker position={ this.props.position } />
-          <MapMarker ref="previewMarker" position={ this.state.previewPosition } />
-        </Map>
+        <div className="full-screen" ref="mapthing">
+          <Map center={ this.props.position }
+            ref="leafMap"
+            zoom={ this.props.zoomLevel }
+            className="imagemap full-screen">
+            <TileLayer
+              url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+            <MapMarker ref="previewMarker" position={ this.state.previewPosition } />
+          </Map>
+        </div>
       </section>
     );
   }

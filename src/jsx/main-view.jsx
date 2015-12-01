@@ -20,7 +20,7 @@ class MainView extends Component {
       <div className="main-view full-screen">
         <ImageGrid />
         <Divider />
-        <LeafMap position={ [51.505, -0.09] } zoomLevel={ 13 } />
+        <LeafMap position={ [60.18664, 24.92566] } zoomLevel={ 13 } />
       </div>
     );
   }

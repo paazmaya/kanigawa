@@ -17,16 +17,20 @@ class ImageGrid extends Component {
 
     let items = [
       {
-        src: 'one.jpg'
+        id: 1,
+        alt: 'one.jpg'
       },
       {
-        src: 'two.jpg'
+        id: 2,
+        alt: 'two.jpg'
       },
       {
-        src: 'tre.jpg'
+        id: 3,
+        alt: 'tre.jpg'
       },
       {
-        src: 'yon.jpg'
+        id: 4,
+        alt: 'yon.jpg'
       }
     ];
 
