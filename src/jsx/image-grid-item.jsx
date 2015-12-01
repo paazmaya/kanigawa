@@ -12,6 +12,11 @@ import { DragSource } from 'react-dnd';
  * Implements the drag source contract.
  */
 const imageSource = {
+  /**
+   *
+   * @param {object} props
+   * @returns {object}
+   */
   beginDrag (props) {
     console.log(props);
     return {
@@ -19,6 +24,12 @@ const imageSource = {
     };
   },
 
+  /**
+   *
+   * @param {object} props
+   * @param {DragSourceMonitor} monitor
+   * @returns {boolean}
+   */
   isDragging (props, monitor) {
     // If your component gets unmounted while dragged
     // (like a card in Kanban board dragged between lists)
@@ -27,6 +38,13 @@ const imageSource = {
     return monitor.getItem().src === props.src;
   },
 
+  /**
+   *
+   * @param {object} props
+   * @param {DragSourceConnector} connect
+   * @param {DragSourceMonitor} monitor
+   * @returns {void}
+   */
   endDrag (props, monitor, component) {
     if (!monitor.didDrop()) {
       return;
@@ -40,12 +58,12 @@ const imageSource = {
 
 };
 
-
 /**
  * Specifies the props to inject into your component.
  *
  * @param {DragSourceConnector} connect
  * @param {DragSourceMonitor} monitor
+ * @returns {object}
  */
 function collect (connect, monitor) {
   return {
@@ -97,4 +115,5 @@ ImageGridItem.propTypes = {
 const srcOptions = {
   dropEffect: 'copy'
 };
+
 export default DragSource('ImageGridItem', imageSource, collect, srcOptions)(ImageGridItem);

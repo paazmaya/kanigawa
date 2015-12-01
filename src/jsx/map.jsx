@@ -17,22 +17,33 @@ import 'css/map.css';
 
 const targetSpecification = {
 
-
-  // Use it to specify whether the drop target is able to accept the item.
-  // If you want to always allow it, just omit this method
+  /**
+   * Use it to specify whether the drop target is able to accept the item.
+   * If you want to always allow it, just omit this method
+   *
+   * @param {object} props
+   * @param {DropTargetMonitor} monitor
+   * @returns {void}
+   */
   canDrop (props, monitor) {
 
     // You can disallow drop based on props or item
     const item = monitor.getItem();
 
-    //console.log(item.fromPosition, props.position);
+    console.log('canDrop', item.fromPosition, props.position);
 
     return true;
   },
 
-  // Called when a compatible item is dropped on the target
+  /**
+   * Called when a compatible item is dropped on the target
+   *
+   * @param {object} props
+   * @param {DragTargetConnector} connect
+   * @param {DropTargetMonitor} monitor
+   * @returns {void}
+   */
   drop (props, monitor, component) {
-    console.log('drop');
 
     if (monitor.didDrop()) {
       // If you want, you can check whether some nested
@@ -42,6 +53,8 @@ const targetSpecification = {
 
     // Obtain the dragged item
     const item = monitor.getItem();
+
+    console.log('drop', item.fromPosition, props.position);
 
     // You can do something with it
     // ChessActions.movePiece(item.fromPosition, props.position);
@@ -62,6 +75,7 @@ const targetSpecification = {
   hover (props, monitor, component) {
     const map = component.refs.leafMap.getLeafletElement(),
       marker = component.refs.previewMarker;
+
     console.log(monitor.getSourceClientOffset());
     let point = map.containerPointToLatLng([5,8]);
     console.log(point);
@@ -101,7 +115,7 @@ class LeafMap extends Component {
 
   render () {
     return this.props.connectDropTarget(
-      <section className="map">
+      <section className="map-section">
         <Map center={ this.props.position }
           ref="leafMap"
           zoom={ this.props.zoomLevel }

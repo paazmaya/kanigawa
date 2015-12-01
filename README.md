@@ -10,6 +10,9 @@
 As this project/application is still being planned and investigated, it is running
 with the pre-build version of [Electron](http://electron.atom.io/).
 
+I will also use this as an opportunity to study about [ES2015 modules](http://jsmodules.io/),
+and whatever else is interesting under the :rainbow:.
+
 It will also be available as a web site at [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi)
 because it can. However the geotagging functionality is limited to a single image at a time.
 
@@ -123,6 +126,44 @@ npm run start-app
 
 Electron accepts some [command line options to be passed on Chrome](https://github.com/atom/electron/blob/master/docs/api/chrome-command-line-switches.md),
 which can be seen with `chrome --js-flags="--help"` command.
+
+## 3rd party libraries and tools making this possible
+
+**Thank you!**
+
+### Front end libraries
+
+* [`leaflet`](http://leafletjs.com/)
+* [`react` and `react-dom`](http://facebook.github.io/react/)
+* [`react-dnd` and `react-dnd-html5-backend`](https://github.com/gaearon/react-dnd)
+* [`react-leaflet`]()
+
+### Back end libraries
+
+* [`electron-prebuilt`]()
+* [`is-image`]()
+
+### Build tools
+
+* [`autoprefixer`](https://github.com/postcss/autoprefixer)
+* [`babel-core`, `babel-preset-es2015` and `babel-preset-react`](http://babeljs.io/)
+* [`babel-loader`](https://github.com/babel/babel-loader)
+* [`css-loader`]()
+* [`exports-loader`]()
+* [`extract-text-webpack-plugin`]()
+* [`image-webpack-loader`]()
+* [`imports-loader`]()
+* [`postcss-loader`]()
+* [`style-loader`]()
+* [`webpack`](http://webpack.github.io/)
+
+### Development tools
+
+* [`babel-eslint`](https://github.com/babel/babel-eslint)
+* [`eslint-plugin-react`](https://github.com/yannickcr/eslint-plugin-react)
+* [`eslint`](http://eslint.org/)
+* [`http-server`](https://github.com/indexzero/http-server)
+* [`webpack-dev-server`]()
 
 ## Updating [GitHub Pages](https://pages.github.com/)
 

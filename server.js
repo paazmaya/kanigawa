@@ -8,7 +8,8 @@
 'use strict';
 
 const fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  os = require('os');
 
 const isImage = require('is-image'),
   exiv2 = require('exiv2');
@@ -82,7 +83,7 @@ const getMetas = (filelist, callback) => {
 const openDialog = (win, callback) => {
   const dialogOpts = {
     title: 'Choose directory...',
-    defaultPath: __dirname,
+    defaultPath: os.homedir(),
     filters: [],
     properties: ['openDirectory']
   };

@@ -7,8 +7,10 @@
  */
 
 
-.map {
+.map-section {
 	flex: 0 1 50%;
+  padding: 2em;
+  background-color: rebeccapurple;
 }
 
 .imagemap {
