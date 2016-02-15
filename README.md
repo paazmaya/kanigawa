@@ -77,6 +77,7 @@ sudo apt-get install libexiv2 libexiv2-dev # Debian/Ubuntu
 * Use `electron.remote` to call stuff in the `mainWindow`
 * Or communicate via `open-url` event so that the React application works as a regular web site
 * Well the `open-url` did not do it, but `app.interceptHttpProtocol` shall be.
+* Package with `electron-packager`
 
 ### Map default centre location and zoom level
 

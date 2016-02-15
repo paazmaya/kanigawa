@@ -24,7 +24,7 @@
 	height: 6em;
 }
 
-.image-grid-item-dragging {
+.image-grid-list-dragging .image-grid-item {
 	opacity: 0.5;
 }
 

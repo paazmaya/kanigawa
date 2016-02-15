@@ -114,7 +114,9 @@ class LeafMap extends Component {
     super(props);
 
     // getInitialState equivalent
-    this.state = {previewPosition: null};
+    this.state = {
+      previewPosition: null
+    };
   }
 
   onDragOver (event) {
@@ -122,6 +124,35 @@ class LeafMap extends Component {
   }
 
   render () {
+    const hereUrlBase = 'http://{s}.{base}.maps.api.here.com/maptile/2.1/maptile/newest/';
+    const hereUrlEnd = '/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}&lg={language}';
+
+    /*
+    var HERE_normalDayGrey = L.tileLayer(hereUrlBase + 'normal.day.grey' + hereUrlEnd, baseOptions);
+    var HERE_hybridDay = L.tileLayer(hereUrlBase + 'hybrid.day' + hereUrlEnd, aerialOptions);
+    var HERE_terrainDayMobile = L.tileLayer(hereUrlBase + 'terrain.day.mobile' + hereUrlEnd, aerialOptions);
+
+    var hereLayers = {
+      'Normal': HERE_normalDayGrey,
+      'Hybrid': HERE_hybridDay,
+      'Terrain': HERE_terrainDayMobile
+    };
+    L.control.layers(hereLayers).addTo(map);
+    */
+
+    const hData = document.querySelector('body').dataset;
+
+    const hereOpts = {
+      attribution: 'Map &copy; 1987-2015 <a href="http://developer.here.com">HERE</a>',
+      subdomains: '1234',
+      app_id: hData.hereId,
+      app_code: hData.hereCode,
+      language: 'en-GB',
+      base: 'aerial',
+      minZoom: 0,
+      maxZoom: 20
+    };
+
     return this.props.connectDropTarget(
       <section className="map-section">
         <div className="full-screen" ref="mapthing">
@@ -129,9 +160,18 @@ class LeafMap extends Component {
             ref="leafMap"
             zoom={ this.props.zoomLevel }
             className="imagemap full-screen">
+
             <TileLayer
               url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+            <TileLayer {...hereOpts}
+              base="base"
+              url={ hereUrlBase + 'normal.day.grey' + hereUrlEnd }/>
+            <TileLayer {...hereOpts}
+              url={ hereUrlBase + 'hybrid.day' + hereUrlEnd }/>
+            <TileLayer {...hereOpts}
+              url={ hereUrlBase + 'terrain.day.mobile' + hereUrlEnd }/>
+
             <MapMarker ref="previewMarker" position={ this.state.previewPosition } />
           </Map>
         </div>
