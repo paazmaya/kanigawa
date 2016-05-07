@@ -5,10 +5,10 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-import React, { Component, PropTypes } from 'react';
-import { Map, TileLayer } from 'react-leaflet';
+import React, {Component, PropTypes} from 'react';
+import {Map, TileLayer} from 'react-leaflet';
 
-import { DropTarget } from 'react-dnd';
+import {DropTarget} from 'react-dnd';
 
 import MapMarker from './map-marker.jsx';
 
@@ -62,7 +62,7 @@ const targetSpecification = {
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
     // in the drag source's endDrag() method
-    return { moved: true };
+    return {moved: true};
   },
 
   /**
@@ -102,7 +102,7 @@ function collect (connect, monitor) {
     connectDropTarget: connect.dropTarget(),
     // You can ask the monitor about the current drag state:
     isOver: monitor.isOver(),
-    isOverCurrent: monitor.isOver({ shallow: false }),
+    isOverCurrent: monitor.isOver({shallow: false}),
     canDrop: monitor.canDrop(),
     itemType: monitor.getItemType()
   };

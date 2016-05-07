@@ -5,8 +5,8 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-import React, { Component, PropTypes } from 'react';
-import { DragSource } from 'react-dnd';
+import React, {Component, PropTypes} from 'react';
+import {DragSource} from 'react-dnd';
 
 import ImageGridItem from './image-grid-item.jsx';
 

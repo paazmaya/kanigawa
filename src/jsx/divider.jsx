@@ -5,7 +5,7 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import 'css/divider.css';
 

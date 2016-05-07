@@ -5,8 +5,8 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-import React, { Component } from 'react';
-import { Marker, Popup } from 'react-leaflet';
+import React, {Component} from 'react';
+import {Marker, Popup} from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import 'css/map.css';

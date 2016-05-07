@@ -5,7 +5,7 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 
 import ImageGridList from './image-grid-list.jsx';
 
@@ -28,11 +28,11 @@ class ImageGrid extends Component {
   }
 
   componentWillMount () {
-    document.addEventListener("keyPress", this._handleEscKey, false);
+    document.addEventListener('keyPress', this._handleEscKey, false);
   }
 
   componentWillUnmount () {
-    document.removeEventListener("keyPress", this._handleEscKey, false);
+    document.removeEventListener('keyPress', this._handleEscKey, false);
   }
 
   onItemClicked (event) {
