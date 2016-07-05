@@ -47,7 +47,7 @@
     "css-loader": "^0.23.1",
     "electron-prebuilt": "^1.2.5",
     "eslint": "^3.0.0",
-    "eslint-config-paazmaya": "^2.1.0",
+    "eslint-config-paazmaya": "^2.2.0",
     "eslint-plugin-react": "^5.2.2",
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
