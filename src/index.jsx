@@ -2,7 +2,7 @@
  * Electron based desktop application for setting geotags for images
  *
  * Licensed under the MIT license
- * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (http://paazmaya.fi)
+ * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
 import React from 'react';
