@@ -3,9 +3,9 @@
 > Electron based desktop application for setting geotags for images
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
-[![Windows build status](https://ci.appveyor.com/api/projects/status/github/paazmaya/kanigawa?branch=master&svg=true)](http://www.appveyor.com/)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/wls3dplcr1vvqwa6/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/kanigawa/branch/master)
 
-![kanigawa project logo](./icon.png)
+![kanigawa project logo](icon.png)
 
 As this project/application is still being planned and investigated, it is running
 with the pre-build version of [Electron](http://electron.atom.io/).
