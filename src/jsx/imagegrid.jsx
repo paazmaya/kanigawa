@@ -63,7 +63,7 @@ class ImageGrid extends Component {
 
   render () {
 
-    let items = [
+    const items = [
       {
         id: 1,
         src: 'one.jpg',

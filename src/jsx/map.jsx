@@ -62,7 +62,9 @@ const targetSpecification = {
     // You can also do nothing and return a drop result,
     // which will be available as monitor.getDropResult()
     // in the drag source's endDrag() method
-    return {moved: true};
+    return {
+      moved: true
+    };
   },
 
   /**
@@ -83,7 +85,9 @@ const targetSpecification = {
     ];
 
     const point = map.containerPointToLatLng(pos);
-    component.setState({previewPosition: point});
+    component.setState({
+      previewPosition: point
+    });
   }
 };
 
@@ -102,7 +106,9 @@ function collect (connect, monitor) {
     connectDropTarget: connect.dropTarget(),
     // You can ask the monitor about the current drag state:
     isOver: monitor.isOver(),
-    isOverCurrent: monitor.isOver({shallow: false}),
+    isOverCurrent: monitor.isOver({
+      shallow: false
+    }),
     canDrop: monitor.canDrop(),
     itemType: monitor.getItemType()
   };

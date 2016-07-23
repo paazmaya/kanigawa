@@ -8,12 +8,15 @@
   "plugins": [
     "react"
   ],
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "classes": true,
-    "modules": true,
-    "templateStrings": true,
-    "jsx": true
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "classes": true,
+      "modules": true,
+      "templateStrings": true,
+      "jsx": true
+    }
   },
   "globals": {
     "document": false,

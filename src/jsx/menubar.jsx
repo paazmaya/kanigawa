@@ -17,7 +17,9 @@ class Menubar extends Component {
 
     headers.append('Content-Type', 'application/json');
 
-    fetch(event.target.href, {headers: headers, mode: 'no-cors'}).then((data) => {
+    fetch(event.target.href, {
+      headers: headers, mode: 'no-cors'
+    }).then((data) => {
       console.log(data);
     }).catch((error) => {
       console.error(error);

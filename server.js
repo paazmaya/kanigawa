@@ -98,8 +98,12 @@ const openDialog = (win, callback) => {
       getMetas(images, (meta) => {
         // Somehow pass the meta to the window and React application..
         console.log(meta);
-        let data = JSON.stringify({images: meta});
-        callback({mimeType: 'application/json', data: data, length: data.length});
+        const data = JSON.stringify({
+          images: meta
+        });
+        callback({
+          mimeType: 'application/json', data: data, length: data.length
+        });
         //webContents.send('image-meta', meta);
       });
     });
@@ -161,7 +165,9 @@ app.on('ready', () => {
   webContents.openDevTools();
 
   webContents.on('did-finish-load', function () {
-    webContents.send('ping', {some: 'whoooooooh!'});
+    webContents.send('ping', {
+      some: 'whoooooooh!'
+    });
   });
 
   webContents.executeJavaScript('console.log("hello there");');
