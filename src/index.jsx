@@ -14,10 +14,10 @@ import MainView from 'jsx/main-view.jsx';
 
 import 'css/index.css';
 
-render((
+render(
 	<div className="index-view full-screen">
 		<Menubar />
 		<Info />
 		<MainView />
 	</div>
-), document.querySelector('.app-container'));
+, document.querySelector('.app-container'));

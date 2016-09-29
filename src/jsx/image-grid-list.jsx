@@ -24,6 +24,7 @@ const imageSource = {
    */
   beginDrag (props) {
     console.log(props);
+
     return {
       id: props.id
     };

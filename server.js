@@ -146,6 +146,7 @@ app.on('ready', () => {
     else {
       console.log(request);
       request.session = null;
+
       return callback(request);
     }
   }, (error) => {
