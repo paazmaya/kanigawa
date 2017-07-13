@@ -45,6 +45,8 @@ npm install
 npm run start-app
 ```
 
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `6.9.5`, which is [the Long Term Support (LTS) version](https://github.com/nodejs/LTS#lts-schedule1).
+
 **Later** it should be possible to install this application globally and start it wherever
 it is common in the given platform:
 
