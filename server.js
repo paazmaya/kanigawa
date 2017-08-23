@@ -15,9 +15,9 @@ const isImage = require('is-image'),
   exiv2 = require('exiv2');
 
 const electron = require('electron');
-const app = electron.app;  // Module to control application life.
+const app = electron.app; // Module to control application life.
 const dialog = electron.dialog; // http://electron.atom.io/docs/v0.35.0/api/dialog/
-const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
 const nativeImage = electron.nativeImage;
 
 
@@ -102,7 +102,9 @@ const openDialog = (win, callback) => {
           images: meta
         });
         callback({
-          mimeType: 'application/json', data: data, length: data.length
+          mimeType: 'application/json',
+          data: data,
+          length: data.length
         });
         //webContents.send('image-meta', meta);
       });

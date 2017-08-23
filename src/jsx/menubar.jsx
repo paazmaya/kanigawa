@@ -18,7 +18,8 @@ class Menubar extends Component {
     headers.append('Content-Type', 'application/json');
 
     fetch(event.target.href, {
-      headers: headers, mode: 'no-cors'
+      headers: headers,
+      mode: 'no-cors'
     }).then((data) => {
       console.log(data);
     }).catch((error) => {
@@ -31,7 +32,7 @@ class Menubar extends Component {
       <div className="menubar">
         <a href="http://kanigawa/choose-directory"
           onClick={ this.onChooseDirClick }
-          >Choose a directory</a>
+        >Choose a directory</a>
       </div>
     );
   }
