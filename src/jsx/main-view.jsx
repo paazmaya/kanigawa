@@ -5,10 +5,14 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React, {Component} from 'react';
+import React, {
+  Component
+} from 'react';
 
 import HTML5Backend from 'react-dnd-html5-backend';
-import {DragDropContext} from 'react-dnd';
+import {
+  DragDropContext
+} from 'react-dnd';
 
 import ImageGrid from 'jsx/imagegrid.jsx';
 import Divider from 'jsx/divider.jsx';

@@ -6,7 +6,9 @@
  */
 
 import React from 'react';
-import {render} from 'react-dom';
+import {
+  render
+} from 'react-dom';
 
 import Menubar from 'jsx/menubar.jsx';
 import Info from 'jsx/info.jsx';

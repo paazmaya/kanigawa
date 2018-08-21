@@ -5,7 +5,9 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React, {Component} from 'react';
+import React, {
+  Component
+} from 'react';
 
 class Info extends Component {
   render () {

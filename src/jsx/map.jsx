@@ -5,10 +5,16 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React, {Component, PropTypes} from 'react';
-import {Map, TileLayer} from 'react-leaflet';
+import React, {
+  Component, PropTypes
+} from 'react';
+import {
+  Map, TileLayer
+} from 'react-leaflet';
 
-import {DropTarget} from 'react-dnd';
+import {
+  DropTarget
+} from 'react-dnd';
 
 import MapMarker from './map-marker.jsx';
 

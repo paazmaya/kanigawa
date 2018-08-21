@@ -5,7 +5,9 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React, {Component, PropTypes} from 'react';
+import React, {
+  Component, PropTypes
+} from 'react';
 
 class ImageGridItem extends Component {
   render () {
