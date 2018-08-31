@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
 [![Windows build status](https://ci.appveyor.com/api/projects/status/wls3dplcr1vvqwa6/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/kanigawa/branch/master)
+[![dependencies Status](https://david-dm.org/paazmaya/kanigawa/status.svg)](https://david-dm.org/paazmaya/kanigawa)
 
 ![kanigawa project logo](icon.png)
 
