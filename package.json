@@ -14,7 +14,9 @@
     "build": "webpack --config webpack.config.js --progress --optimize-minimize",
     "move-bundle": "mkdir -p pages/assets && mv build/* pages/assets/",
     "dev": "webpack-dev-server --progress --colors --port 9981",
-    "r-build": "rollup -c rollup.config.js"
+    "r-build": "rollup -c rollup.config.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -69,6 +71,8 @@
     "webpack-dev-server": "^3.1.7"
   },
   "dependencies": {
-    "exiv2": "^0.6.3"
-  }
+    "exiv2": "^0.6.3",
+    "snyk": "^1.94.0"
+  },
+  "snyk": true
 }
