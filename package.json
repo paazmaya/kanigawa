@@ -72,7 +72,7 @@
   },
   "dependencies": {
     "exiv2": "^0.6.3",
-    "snyk": "^1.117.1"
+    "snyk": "^1.124.1"
   },
   "snyk": true
 }
