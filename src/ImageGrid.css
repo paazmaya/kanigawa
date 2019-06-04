@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * Electron based desktop application for setting geotags for images
  *
@@ -15,21 +14,4 @@
 .image-grid-list {
 	display: flex;
 	flex-wrap: wrap;
-}
-
-.image-grid-item {
-	flex: 0 0 6em;
-	margin: 0;
-	padding: 0.1em;
-	height: 6em;
-}
-
-.image-grid-list-dragging .image-grid-item {
-	opacity: 0.5;
-}
-
-.image-grid-image {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
 }

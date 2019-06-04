@@ -1,23 +1,7 @@
 {
   "name": "kanigawa",
-  "version": "0.1.0",
   "description": "Electron based desktop application for setting geotags for images",
-  "main": "server.js",
-  "scripts": {
-    "start-app": "electron server.js",
-    "start": "npm run serve | npm run dev",
-    "test": "npm run lint",
-    "lint": "eslint server.js src/*.jsx src/jsx/*.jsx",
-    "pages": "npm run build && npm run move-bundle",
-    "serve": "http-server -p 9980 ./",
-    "serve-https": "http-server -p 9980 --ssl --cert certificates/server.crt --key certificates/server.key ./",
-    "build": "webpack --config webpack.config.js --progress --optimize-minimize",
-    "move-bundle": "mkdir -p pages/assets && mv build/* pages/assets/",
-    "dev": "webpack-dev-server --progress --colors --port 9981",
-    "r-build": "rollup -c rollup.config.js",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
-  },
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/paazmaya/kanigawa.git"
@@ -29,7 +13,10 @@
     "image",
     "gps",
     "geo",
-    "geotag"
+    "geotag",
+    "organize",
+    "pictures",
+    "location"
   ],
   "author": "Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)",
   "license": "MIT",
@@ -37,42 +24,42 @@
     "url": "https://github.com/paazmaya/kanigawa/issues"
   },
   "homepage": "https://github.com/paazmaya/kanigawa",
-  "devDependencies": {
-    "autoprefixer": "^9.5.1",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.6",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2015-rollup": "^3.0.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^2.1.1",
-    "electron-prebuilt": "^1.4.13",
-    "eslint": "^5.16.0",
-    "eslint-config-paazmaya": "^5.3.0",
-    "eslint-plugin-react": "^7.13.0",
-    "exports-loader": "^0.7.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "http-server": "^0.11.1",
-    "image-webpack-loader": "^4.6.0",
-    "imports-loader": "^0.8.0",
-    "is-image": "^3.0.0",
-    "leaflet": "^1.5.1",
-    "postcss": "^7.0.16",
-    "postcss-loader": "^3.0.0",
-    "react": "^16.8.6",
-    "react-dnd": "^7.4.5",
-    "react-dnd-html5-backend": "^7.4.4",
-    "react-dom": "^16.8.6",
-    "react-leaflet": "^2.3.0",
-    "rollup": "^1.11.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.31.0",
-    "webpack-dev-server": "^3.3.1"
-  },
   "dependencies": {
-    "exiv2": "^0.6.3",
-    "snyk": "^1.163.3"
+    "@types/jest": "24.0.13",
+    "@types/leaflet": "1.4.4",
+    "@types/node": "12.0.4",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
+    "@types/react-leaflet": "2.2.1",
+    "leaflet": "1.5.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-leaflet": "2.3.0",
+    "react-scripts": "3.0.1",
+    "redux-zero": "^5.0.2",
+    "source-map-explorer": "^1.8.0",
+    "typescript": "3.5.1"
   },
-  "snyk": true
+  "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

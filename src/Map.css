@@ -6,9 +6,15 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-.divider {
-	flex: 0 0 auto;
-	display: block;
-	width: 0.5em;
+
+.map-section {
+  padding: 1rem;
+  background-color: rebeccapurple;
+}
+
+.imagemap {
+	width: 100%;
 	height: 100%;
+	min-height: 30rem;
+	overflow: hidden;
 }

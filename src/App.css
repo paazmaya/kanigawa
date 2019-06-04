@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * Electron based desktop application for setting geotags for images
  *
@@ -6,13 +5,20 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
+.App {}
 
-.menubar {
-	display: flex;
-	width: 100%;
-	height: 4em;
+.App-header {
+  width: 100%;
+  height: 2rem;
 }
 
-.menubar-item {
-	flex: 1 1 50%;
+.App-main {
+  display: flex;
+  min-height: calc(100vh - 2rem);
+  align-items: stretch;
+	flex-wrap: nowrap;
+}
+
+.App-section {
+  flex: 1 1 50%;
 }
