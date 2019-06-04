@@ -1,13 +1,10 @@
-sudo: false
-language: node_js
-
 # https://docs.travis-ci.com/user/sonarcloud/
 dist: trusty # Sonarcloud requirement
 addons:
-  # See https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+  # See https://github.com/travis-ci/apt-package-safelist/blob/master/ubuntu-trusty
   apt:
     packages:
-      - libexiv2-11
+      - exiv2
       - libexiv2-dev
   sonarcloud:
     organization: "paazmaya-github"
@@ -16,8 +13,8 @@ addons:
 after_install:
   - sonar-scanner
 
+language: node_js
 node_js:
-  - "8"
   - "10"
 os:
   - linux
