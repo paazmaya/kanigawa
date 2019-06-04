@@ -1,5 +1,21 @@
 sudo: false
 language: node_js
+
+# https://docs.travis-ci.com/user/sonarcloud/
+dist: trusty # Sonarcloud requirement
+addons:
+  # See https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
+  apt:
+    packages:
+      - libexiv2-11
+      - libexiv2-dev
+  sonarcloud:
+    organization: "paazmaya-github"
+    token:
+      secure: $SONAR_TOKEN
+after_install:
+  - sonar-scanner
+
 node_js:
   - "8"
   - "10"
@@ -13,12 +29,6 @@ before_install:
   # Because they say that osx does not support node_js
   #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install homebrew/versions/node4-lts; fi;
 
-# See https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-precise
-addons:
-  apt:
-    packages:
-      - libexiv2-11
-      - libexiv2-dev
 matrix:
   fast_finish: true
   #allow_failures:
