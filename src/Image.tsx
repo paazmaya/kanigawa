@@ -11,13 +11,15 @@ import React, {
 import './Image.css';
 
 export interface ImageProps {
-  url: string
+  url: string,
+  key: string,
+  color?: string
 }
 
 class Image extends PureComponent<ImageProps> {
   render () {
     return (
-      <figure className="image-grid-item">
+      <figure className="image-grid-item" style={{backgroundColor: this.props.color}}>
         <img className="image-grid-image"
           src={ this.props.url }
           alt={ this.props.url }

@@ -5,6 +5,9 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
+* {
+  box-sizing: border-box;
+}
 
 html, body {
 	width: 100%;

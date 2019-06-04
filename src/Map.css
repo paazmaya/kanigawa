@@ -8,8 +8,9 @@
 
 
 .map-section {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: rebeccapurple;
+  height: 100%;
 }
 
 .imagemap {

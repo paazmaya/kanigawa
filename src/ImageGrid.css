@@ -7,11 +7,9 @@
 
 
 .image-grid {
-	flex: 0 1 50%;
-	background-color: mediumvioletred;
-}
-
-.image-grid-list {
 	display: flex;
-	flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: min-content;
+	background-color: mediumvioletred;
 }
