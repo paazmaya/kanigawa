@@ -8,12 +8,15 @@
 import React, {Component, SyntheticEvent} from 'react';
 
 import {
-  Map as LMap, TileLayer
+  Map as LMap, TileLayer, LayersControl
 } from 'react-leaflet';
 
 import Marker from './Marker';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
+
+// https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/layers-control.js
+const { BaseLayer } = LayersControl;
 
 interface MapProps {
   center: [number, number]
@@ -67,18 +70,26 @@ class Map extends Component<MapProps> {
           ref="leafMap"
           zoom={ this.props.zoomLevel }
           className="imagemap">
-
-          <TileLayer
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
-          <TileLayer {...hereOpts}
-            base="base"
-            url={ hereUrlBase + 'normal.day.grey' + hereUrlEnd }/>
-          <TileLayer {...hereOpts}
-            url={ hereUrlBase + 'hybrid.day' + hereUrlEnd }/>
-          <TileLayer {...hereOpts}
-            url={ hereUrlBase + 'terrain.day.mobile' + hereUrlEnd }/>
-
+          <LayersControl position="topright">
+            <BaseLayer checked name="OpenStreetMap">
+              <TileLayer
+                url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+            </BaseLayer>
+            <BaseLayer checked name="HERE grey">
+              <TileLayer {...hereOpts}
+                base="base"
+                url={ hereUrlBase + 'normal.day.grey' + hereUrlEnd }/>
+            </BaseLayer>
+            <BaseLayer checked name="HERE hybrid">
+              <TileLayer {...hereOpts}
+                url={ hereUrlBase + 'hybrid.day' + hereUrlEnd }/>
+            </BaseLayer>
+            <BaseLayer checked name="HERE terrain">
+              <TileLayer {...hereOpts}
+                url={ hereUrlBase + 'terrain.day.mobile' + hereUrlEnd }/>
+            </BaseLayer>
+          </LayersControl>
           <Marker ref="previewMarker" position={ this.props.center } />
         </LMap>
       </div>
