@@ -33,3 +33,11 @@ matrix:
   fast_finish: true
   #allow_failures:
   #  - os: osx
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  keep_history: true
+  on:
+    branch: master

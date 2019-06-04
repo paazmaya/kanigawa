@@ -42,7 +42,7 @@
     "typescript": "3.5.1"
   },
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js' --html build/static/treemap.html",
+    "analyze": "source-map-explorer 'build/static/js/*.js' --html build/treemap.html",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
