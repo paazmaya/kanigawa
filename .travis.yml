@@ -1,7 +1,8 @@
 # https://docs.travis-ci.com/user/sonarcloud/
-dist: trusty # Sonarcloud requirement
+# https://github.com/travis-ci/apt-package-safelist/blob/master/ubuntu-trusty
+dist: trusty
+
 addons:
-  # See https://github.com/travis-ci/apt-package-safelist/blob/master/ubuntu-trusty
   apt:
     packages:
       - exiv2
@@ -16,23 +17,15 @@ after_install:
 language: node_js
 node_js:
   - "10"
-os:
-  - linux
-  #- osx
-before_install:
-  - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
-  #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi;
-  #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install pkg-config exiv2; fi;
-  # Because they say that osx does not support node_js
-  #- if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install homebrew/versions/node4-lts; fi;
 script:
-  - npm run build
-  - npm run analyze
   - npm test
 matrix:
   fast_finish: true
-  #allow_failures:
-  #  - os: osx
+
+# Deploy to GitHub Pages
+before_deploy:
+  - npm run build
+  - npm run analyze
 deploy:
   provider: pages
   skip_cleanup: true

@@ -4,7 +4,7 @@
  * Licensed under the MIT license
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
-import {State, Store} from './store';
+//import {State, Store} from './store';
 
 const actions = store => ({
   increment: state => ({ zoomLevel: state.zoomLevel + 1 }),
