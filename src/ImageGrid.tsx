@@ -18,7 +18,7 @@ class ImageGrid extends PureComponent<ImageGridProps> {
   render () {
     return (
       <div className="image-grid">{
-        this.props.images.map(item => (<Image url={item.url}/>))
+        this.props.images.map(item => (<Image url={item.url} key={Math.random() * 5000} />))
       }</div>
     );
   }

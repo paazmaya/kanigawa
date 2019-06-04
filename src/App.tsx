@@ -5,12 +5,17 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'redux-zero/react';
 import Map from './Map';
 import ImageGrid from './ImageGrid';
 import './App.css';
 import actions from './actions';
+
+interface AppProps {
+  center: [number, number],
+  zoomLevel: number
+}
 
 const mapToProps = ({
   center, 
@@ -20,27 +25,30 @@ const mapToProps = ({
   zoomLevel 
 });
 
-const App = connect(mapToProps, actions)(({ center,  zoomLevel, increment, decrement }) => {
-  const images = [
-    {
-      url: ''
-    }
-  ];
+// { center,  zoomLevel, increment, decrement }
+export class App extends Component<AppProps> {
+  render () {
+    const images = [
+      {
+        url: ''
+      }
+    ];
 
-  return (
-    <div className="App full-screen">
-      <header className="App-header">
-      </header>
-      <div className="App-main">
-        <section className="App-section section-grid">
-          <ImageGrid images={images} />
-        </section>
-        <section className="App-section section-map">
-          <Map center={center} zoomLevel={zoomLevel} />
-        </section>
+    return (
+      <div className="App full-screen">
+        <header className="App-header">
+        </header>
+        <div className="App-main">
+          <section className="App-section section-grid">
+            <ImageGrid images={images} />
+          </section>
+          <section className="App-section section-map">
+            <Map center={this.props.center} zoomLevel={this.props.zoomLevel} />
+          </section>
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+}
 
-export default App;
+export default connect(mapToProps, actions)(App);
