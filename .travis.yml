@@ -11,13 +11,12 @@ addons:
     organization: "paazmaya-github"
     token:
       secure: $SONAR_TOKEN
-after_install:
-  - sonar-scanner
 
 language: node_js
 node_js:
   - "10"
 script:
+  - sonar-scanner
   - npm test
 matrix:
   fast_finish: true

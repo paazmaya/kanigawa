@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
 [![Windows build status](https://ci.appveyor.com/api/projects/status/wls3dplcr1vvqwa6/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/kanigawa/branch/master)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=kanigawa&metric=sqale_index)](https://sonarcloud.io/dashboard?id=kanigawa)
 [![dependencies Status](https://david-dm.org/paazmaya/kanigawa/status.svg)](https://david-dm.org/paazmaya/kanigawa)
 
 ![kanigawa project logo](icon.png)
@@ -74,9 +75,13 @@ sudo apt-get install libexiv2 libexiv2-dev # Debian/Ubuntu
 
 ...or [download for Windows](http://www.exiv2.org/download.html).
 
+The file called `package.json` lists the 3rd party libraries and tools, of which
+the property `dependencies` are the ones needed for the frontend React application and
+the property `devDependencies` are those needed for Electron based standalone application.
+
 ## Scripts available via Create React App boilerplate
 
-In the project directory, you can run:
+The [React](https://reactjs.org/) based frontend application has been initialised with [Create React App](https://facebook.github.io/create-react-app/) which provided the following commands:
 
 * `npm start`: Runs the app in the development mode, available at [http://localhost:3000](http://localhost:3000)
 * `npm test`: Run [Jest](https://jestjs.io/) based unit tests
@@ -85,11 +90,22 @@ In the project directory, you can run:
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+## Scripts available via Electron Forge boilerplate
+
+The [Electron](https://electronjs.org/) standalone application container has been initialised with [Electron Forge](https://www.electronforge.io/) and it has provided this project with the following commands:
+
+* `npm run electron:start`
+* `npm run electron:package`
+* `npm run electron:make`
+* `npm run electron:publish`
+
+Before the above commands are useful, the React based frontend application should be build with the `npm run build` command.
+
 ## Deployed to [GitHub Pages](https://pages.github.com/)
 
 There is a special `gh-pages` branch which is updated via Travis CI and then made available as [kanigawa.paazmaya.fi](https://kanigawa.paazmaya.fi).
 
-## Features or actually a roadmap
+## Features or actually a ROADMAP since nothing is implemented yet
 
 * Open a directory recursively on the grid view
 * Drag image to a location on a map

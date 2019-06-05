@@ -7,19 +7,24 @@
 
 'use strict';
 
+
 const fs = require('fs'),
   path = require('path'),
   os = require('os');
 
-const isImage = require('is-image'),
-  exiv2 = require('exiv2');
+const { app, BrowserWindow, dialog, nativeImage, screen } = require('electron');
 
-const electron = require('electron');
-const app = electron.app; // Module to control application life.
-const dialog = electron.dialog; // http://electron.atom.io/docs/v0.35.0/api/dialog/
-const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
-const nativeImage = electron.nativeImage;
+const {
+	getMeta,
+	getMetas,
+  getImages
+} = require('./lib/image-processor');
 
+
+// Handle creating/removing shortcuts on Windows when installing/uninstalling.
+if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
+  app.quit();
+}
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -30,55 +35,6 @@ let mainWindow = null,
   webContents = null;
 
 // app.commandLine.appendSwitch('enable-some-feature', true);
-
-
-// Quit when all windows are closed.
-app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  //if (process.platform !== 'darwin') {
-  app.quit();
-  //}
-});
-
-
-const getImages = (directory) => {
-  console.log(directory);
-  const files = fs.readdirSync(directory);
-
-  const images = files.map((file) => {
-    return path.join(directory, file);
-  }).filter((file) => {
-    return isImage(file);
-  });
-
-  return images;
-};
-
-const getMeta = (filepath, callback) => {
-  const stat = fs.statSync(filepath);
-
-  exiv2.getImageTags(filepath, (error, tags) => {
-    if (error) {
-      console.error('Exif failed for ' + filepath);
-      console.error(error);
-    }
-    callback({
-      exif: tags,
-      name: path.basename(filepath),
-      size: stat.size,
-      birthtime: stat.birthtime.toISOString(),
-      modified: stat.mtime.toISOString(),
-      path: filepath
-    });
-  });
-};
-
-const getMetas = (filelist, callback) => {
-  filelist.forEach((filepath) => {
-    getMeta(filepath, callback);
-  });
-};
 
 const openDialog = (win, callback) => {
   const dialogOpts = {
@@ -112,15 +68,14 @@ const openDialog = (win, callback) => {
   });
 };
 
-let protocol = null;
 const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 
-app.on('ready', () => {
-  const electronScreen = electron.screen,
-    size = electronScreen.getPrimaryDisplay().workAreaSize;
+const createWindow = () => {
+
+  const size = screen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -130,37 +85,8 @@ app.on('ready', () => {
     center: true
   });
 
-  protocol = electron.protocol;
-
-  protocol.interceptHttpProtocol('http', (request, callback) => {
-
-    // In case the URL is to a domain "kanigawa", then handle it.
-    // Otherwise just pass through.
-
-
-    if (request.url.indexOf('http://kanigawa/') !== -1) {
-      // Do your magic
-      console.log('You want kanigawa specific contents');
-      if (request.url === 'http://kanigawa/choose-directory') {
-        openDialog(mainWindow, callback);
-      }
-    }
-    else {
-      console.log(request);
-      request.session = null;
-
-      return callback(request);
-    }
-  }, (error) => {
-    if (error) {
-      console.error('Failed to register intercepting HTTP protocol');
-      console.error(error);
-    }
-  });
-
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${ __dirname }/index.html`);
-
+  mainWindow.loadURL(`file://${__dirname}/build/index.html`);
 
   webContents = mainWindow.webContents;
 
@@ -182,4 +108,26 @@ app.on('ready', () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+};
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', createWindow);
+
+app.on('activate', () => {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (mainWindow === null) {
+    createWindow();
+  }
+});
+
+// Quit when all windows are closed.
+app.on('window-all-closed', () => {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
