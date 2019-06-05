@@ -30,29 +30,18 @@ class Map extends Component<MapProps> {
   }
 
   render () {
-    const hereUrlBase:String = 'http://{s}.{base}.maps.api.here.com/maptile/2.1/maptile/newest/';
+    // https://developer.here.com/documentation/map-tile/topics/request-constructing.html#request-constructing__table-basic-request-elements
+    const hereUrlBase:String = 'https://{s}.{base}.maps.api.here.com/maptile/2.1/{type}/newest/';
     const hereUrlEnd:String = '/{z}/{x}/{y}/256/png8?app_id={app_id}&app_code={app_code}&lg={language}';
-
-    /*
-    var HERE_normalDayGrey = L.tileLayer(hereUrlBase + 'normal.day.grey' + hereUrlEnd, baseOptions);
-    var HERE_hybridDay = L.tileLayer(hereUrlBase + 'hybrid.day' + hereUrlEnd, aerialOptions);
-    var HERE_terrainDayMobile = L.tileLayer(hereUrlBase + 'terrain.day.mobile' + hereUrlEnd, aerialOptions);
-
-    var hereLayers = {
-      'Normal': HERE_normalDayGrey,
-      'Hybrid': HERE_hybridDay,
-      'Terrain': HERE_terrainDayMobile
-    };
-    L.control.layers(hereLayers).addTo(map);
-    */
 
     const hereOpts = {
       attribution: 'Map &copy; 1987-2015 <a href="http://developer.here.com">HERE</a>',
       subdomains: '1234',
       app_id: '',
       app_code: '',
-      language: 'en-GB',
+      language: 'eng',
       base: 'aerial',
+      type: 'maptile',
       minZoom: 0,
       maxZoom: 20
     };
@@ -62,7 +51,6 @@ class Map extends Component<MapProps> {
       hereOpts.app_id = hData.hereId as string;
       hereOpts.app_code = hData.hereCode as string;
     }
-
 
     return (
       <div className="map-section" ref="mapthing">
@@ -76,18 +64,18 @@ class Map extends Component<MapProps> {
                 url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
             </BaseLayer>
-            <BaseLayer checked name="HERE grey">
+            <BaseLayer name="HERE grey">
               <TileLayer {...hereOpts}
                 base="base"
                 url={ hereUrlBase + 'normal.day.grey' + hereUrlEnd }/>
             </BaseLayer>
-            <BaseLayer checked name="HERE hybrid">
+            <BaseLayer name="HERE hybrid">
               <TileLayer {...hereOpts}
                 url={ hereUrlBase + 'hybrid.day' + hereUrlEnd }/>
             </BaseLayer>
-            <BaseLayer checked name="HERE terrain">
+            <BaseLayer name="HERE terrain">
               <TileLayer {...hereOpts}
-                url={ hereUrlBase + 'terrain.day.mobile' + hereUrlEnd }/>
+                url={ hereUrlBase + 'terrain.day' + hereUrlEnd }/>
             </BaseLayer>
           </LayersControl>
           <Marker ref="previewMarker" position={ this.props.center } />
