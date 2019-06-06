@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/paazmaya/kanigawa/precache-manifest.a58b9e827136d75b3274e0ca4f406365.js"
+  "/paazmaya/kanigawa/precache-manifest.746cd830e2663c039ef999f8b1a99a30.js"
 );
 
 self.addEventListener('message', (event) => {

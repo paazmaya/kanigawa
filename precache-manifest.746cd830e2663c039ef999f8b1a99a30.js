@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0fad711ba44f1e773c9e93b3b0fa8fa9",
+    "revision": "f73a98baff881d6abb0c9788edb92a54",
     "url": "/paazmaya/kanigawa/index.html"
   },
   {
