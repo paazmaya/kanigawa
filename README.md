@@ -9,19 +9,11 @@
 
 ![kanigawa project logo](icon.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) version 3, with [TypeScript](https://www.typescriptlang.org/).
+This project runs inside Electron standalone application, with [React.js](http://facebook.github.io/react/) based frontend application,
+that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) version 3, 
+with [TypeScript](https://www.typescriptlang.org/).
 
-The map is made with [Leaflet](http://leafletjs.com/), while using [React.js](http://facebook.github.io/react/) to create the views and Redux-zero for handling data.
-
-As this project/application is still being planned and investigated, it is running
-with the pre-build version of [Electron](http://electron.atom.io/).
-
-```sh
-npm run start-app
-```
-
-Electron accepts some [command line options to be passed on Chrome](https://github.com/atom/electron/blob/master/docs/api/chrome-command-line-switches.md),
-which can be seen with `chrome --js-flags="--help"` command.
+The map is made with [Leaflet](http://leafletjs.com/) and data is handled via [Redux Zero](https://matheusml1.gitbooks.io/redux-zero-docs/content/).
 
 It will also be available as a web site at [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi)
 because it can. However the geotagging functionality is limited to a single image at a time.
@@ -52,7 +44,8 @@ Clone or download this repository and run the following command to start the app
 
 ```sh
 npm install
-npm run start-app
+npm run build
+npm run electron:start
 ```
 
 Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `10.13.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
@@ -100,6 +93,9 @@ The [Electron](https://electronjs.org/) standalone application container has bee
 * `npm run electron:publish`
 
 Before the above commands are useful, the React based frontend application should be build with the `npm run build` command.
+
+Electron accepts some [command line options to be passed on Chrome](https://github.com/atom/electron/blob/master/docs/api/chrome-command-line-switches.md),
+which can be seen with `chrome --js-flags="--help"` command.
 
 ## Deployed to [GitHub Pages](https://pages.github.com/)
 

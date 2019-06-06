@@ -12,10 +12,10 @@ const fs = require('fs'),
   path = require('path'),
   os = require('os');
 
-const { app, BrowserWindow, dialog, nativeImage, screen } = require('electron');
+const electron = require('electron');
+const { app, BrowserWindow, dialog, Menu, nativeImage } = require('electron');
 
 const {
-	getMeta,
 	getMetas,
   getImages
 } = require('./lib/image-processor');
@@ -26,9 +26,6 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-// Report crashes to our server.
-require('crash-reporter').start();
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null,
@@ -36,7 +33,7 @@ let mainWindow = null,
 
 // app.commandLine.appendSwitch('enable-some-feature', true);
 
-const openDialog = (win, callback) => {
+const openDialog = (win) => {
   const dialogOpts = {
     title: 'Choose directory...',
     defaultPath: os.homedir(),
@@ -47,22 +44,16 @@ const openDialog = (win, callback) => {
   dialog.showOpenDialog(win, dialogOpts, (filenames) => {
     win.setTitle(filenames[0]);
 
-    console.log(filenames);
+    console.log('showOpenDialog', filenames);
     filenames.forEach((filepath) => {
       const images = getImages(filepath);
 
-      getMetas(images, (meta) => {
-        // Somehow pass the meta to the window and React application..
-        console.log(meta);
-        const data = JSON.stringify({
-          images: meta
+      getMetas(images).then((metas) => {
+        metas.forEach((meta) => {
+          // Somehow pass the meta to the window and React application..
+          console.log(meta);
+          //win.webContents.send('image-meta', meta);
         });
-        callback({
-          mimeType: 'application/json',
-          data: data,
-          length: data.length
-        });
-        //webContents.send('image-meta', meta);
       });
     });
   });
@@ -75,7 +66,7 @@ const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 
 const createWindow = () => {
 
-  const size = screen.getPrimaryDisplay().workAreaSize;
+  const size = electron.screen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -84,6 +75,52 @@ const createWindow = () => {
     height: size.height,
     center: true
   });
+
+
+  const template = [
+    // { role: 'appMenu' }
+    ...(process.platform === 'darwin' ? [{
+      label: app.getName(),
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        { role: 'services' },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideothers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' }
+      ]
+    }] : []),
+    // { role: 'fileMenu' }
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open directory',
+          click () {
+            openDialog(mainWindow);
+          }
+        },
+        process.platform === 'darwin' ? { role: 'close' } : { role: 'quit' }
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click () { 
+            electron.shell.openExternalSync('https://espoo.kobujutsu.fi');
+          }
+        }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/build/index.html`);
