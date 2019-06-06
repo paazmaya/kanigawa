@@ -19,6 +19,8 @@ test_script:
   # run tests
   - npm test
 
+# TODO: Test Electron working around the React app
+
 # Don't actually build.
 build: "off"
 

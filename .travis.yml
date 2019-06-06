@@ -15,6 +15,7 @@ addons:
 language: node_js
 node_js:
   - "10"
+
 script:
   - sonar-scanner
   - npm test

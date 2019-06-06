@@ -13,18 +13,46 @@ const fs = require('fs'),
   os = require('os');
 
 const electron = require('electron');
-const { app, BrowserWindow, dialog, Menu, nativeImage } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, protocol } = require('electron');
+const Store = require('electron-store');
 
 const {
 	getMetas,
   getImages
 } = require('./lib/image-processor');
 
+console.log('userData path:', app.getPath('userData'));
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
+
+// Save some of the handy values in application storage as a JSON file
+const storage = new Store({
+  schema: {
+    windowBounds: {
+      type: 'object',
+      properties: {
+        width: {
+          type: 'number',
+          default: 800
+        },
+        height: {
+          type: 'number',
+          default: 600
+        }
+      }
+    }
+  },
+  defaults: {
+    windowBounds: {
+      width: 800,
+      height: 600
+    }
+  }
+});
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -65,17 +93,15 @@ const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
 // initialization and is ready to create browser windows.
 
 const createWindow = () => {
+  const { width, height } = storage.get('windowBounds');
 
-  const size = electron.screen.getPrimaryDisplay().workAreaSize;
-
-  // Create the browser window.
+  // Create the browser window with earlier window size
   mainWindow = new BrowserWindow({
     icon: img,
-    width: size.width,
-    height: size.height,
+    width: width,
+    height: height,
     center: true
   });
-
 
   const template = [
     // { role: 'appMenu' }
@@ -84,7 +110,12 @@ const createWindow = () => {
       submenu: [
         { role: 'about' },
         { type: 'separator' },
-        { role: 'services' },
+        {
+          label: 'Open configuration file',
+          click () {
+            storage.openInEditor();
+          }
+        },
         { type: 'separator' },
         { role: 'hide' },
         { role: 'hideothers' },
@@ -111,7 +142,7 @@ const createWindow = () => {
       submenu: [
         {
           label: 'Learn More',
-          click () { 
+          click () {
             electron.shell.openExternalSync('https://espoo.kobujutsu.fi');
           }
         }
@@ -130,13 +161,17 @@ const createWindow = () => {
   // Open the DevTools.
   webContents.openDevTools();
 
+  ipcMain.on('hoplaa', (event, arg) => {
+    console.log(arg)
+    event.returnValue = 'pong'
+  })
+
   webContents.on('did-finish-load', function () {
     webContents.send('ping', {
       some: 'whoooooooh!'
     });
-  });
 
-  webContents.executeJavaScript('console.log("hello there");');
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -144,6 +179,16 @@ const createWindow = () => {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  // The BrowserWindow class extends the node.js core EventEmitter class, so we use that API
+  // to listen to events on the BrowserWindow. The resize event is emitted when the window size changes.
+  mainWindow.on('resize', () => {
+    // The event doesn't pass us the window size, so we call the `getBounds` method which returns an object with
+    // the height, width, and x and y coordinates.
+    const { width, height } = mainWindow.getBounds();
+    // Now that we have them, save them using the `set` method.
+    storage.set('windowBounds', { width, height });
   });
 };
 
