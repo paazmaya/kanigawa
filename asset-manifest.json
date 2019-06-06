@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/paazmaya/kanigawa/static/css/main.a6c61fb5.chunk.css",
-    "main.js": "/paazmaya/kanigawa/static/js/main.9880b3b1.chunk.js",
-    "main.js.map": "/paazmaya/kanigawa/static/js/main.9880b3b1.chunk.js.map",
-    "runtime~main.js": "/paazmaya/kanigawa/static/js/runtime~main.0ac54fff.js",
-    "runtime~main.js.map": "/paazmaya/kanigawa/static/js/runtime~main.0ac54fff.js.map",
-    "static/css/2.098bc035.chunk.css": "/paazmaya/kanigawa/static/css/2.098bc035.chunk.css",
-    "static/js/2.1bb743b4.chunk.js": "/paazmaya/kanigawa/static/js/2.1bb743b4.chunk.js",
-    "static/js/2.1bb743b4.chunk.js.map": "/paazmaya/kanigawa/static/js/2.1bb743b4.chunk.js.map",
-    "index.html": "/paazmaya/kanigawa/index.html",
-    "precache-manifest.746cd830e2663c039ef999f8b1a99a30.js": "/paazmaya/kanigawa/precache-manifest.746cd830e2663c039ef999f8b1a99a30.js",
-    "service-worker.js": "/paazmaya/kanigawa/service-worker.js",
-    "static/css/2.098bc035.chunk.css.map": "/paazmaya/kanigawa/static/css/2.098bc035.chunk.css.map",
-    "static/css/main.a6c61fb5.chunk.css.map": "/paazmaya/kanigawa/static/css/main.a6c61fb5.chunk.css.map"
+    "main.css": "./static/css/main.a6c61fb5.chunk.css",
+    "main.js": "./static/js/main.c3d93d76.chunk.js",
+    "main.js.map": "./static/js/main.c3d93d76.chunk.js.map",
+    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+    "static/css/2.098bc035.chunk.css": "./static/css/2.098bc035.chunk.css",
+    "static/js/2.1bb743b4.chunk.js": "./static/js/2.1bb743b4.chunk.js",
+    "static/js/2.1bb743b4.chunk.js.map": "./static/js/2.1bb743b4.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.7486d5f9d9209d8f38a6dc1638783aac.js": "./precache-manifest.7486d5f9d9209d8f38a6dc1638783aac.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.098bc035.chunk.css.map": "./static/css/2.098bc035.chunk.css.map",
+    "static/css/main.a6c61fb5.chunk.css.map": "./static/css/main.a6c61fb5.chunk.css.map"
   }
 }
