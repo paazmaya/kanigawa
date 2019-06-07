@@ -1,6 +1,6 @@
 {
   "name": "kanigawa",
-  "productName": "kanigawa-electron-forge",
+  "productName": "kanigawa",
   "description": "Electron based desktop application for setting geotags for images",
   "version": "0.1.0",
   "repository": {

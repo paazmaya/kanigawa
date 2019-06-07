@@ -9,13 +9,13 @@
 
 ![kanigawa project logo](icon.png)
 
-This project runs inside Electron standalone application, with [React.js](http://facebook.github.io/react/) based frontend application,
-that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) version 3, 
+This project runs inside Electron standalone application, with [React.js](https://facebook.github.io/react/) based frontend application,
+that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) version 3,
 with [TypeScript](https://www.typescriptlang.org/).
 
-The map is made with [Leaflet](http://leafletjs.com/) and data is handled via [Redux Zero](https://matheusml1.gitbooks.io/redux-zero-docs/content/).
+The map is made with [Leaflet](https://leafletjs.com/) and data is handled via [Redux Zero](https://matheusml1.gitbooks.io/redux-zero-docs/content/).
 
-It will also be available as a web site at [kanigawa.paazmaya.fi](http://kanigawa.paazmaya.fi)
+It will also be available as a web site at [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/)
 because it can. However the geotagging functionality is limited to a single image at a time.
 
 ## Why, there is Picasa from Google, right?
@@ -66,7 +66,7 @@ brew install pkg-config exiv2 # Mac
 sudo apt-get install libexiv2 libexiv2-dev # Debian/Ubuntu
 ```
 
-...or [download for Windows](http://www.exiv2.org/download.html).
+...or [download for Windows](https://www.exiv2.org/download.html).
 
 The file called `package.json` lists the 3rd party libraries and tools, of which
 the property `dependencies` are the ones needed for the frontend React application and
@@ -99,7 +99,7 @@ which can be seen with `chrome --js-flags="--help"` command.
 
 ## Deployed to [GitHub Pages](https://pages.github.com/)
 
-There is a special `gh-pages` branch which is updated via Travis CI and then made available as [kanigawa.paazmaya.fi](https://kanigawa.paazmaya.fi).
+There is a special `gh-pages` branch which is updated via Travis CI and then made available as [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/).
 
 ## Features or actually a ROADMAP since nothing is implemented yet
 
@@ -111,7 +111,7 @@ There is a special `gh-pages` branch which is updated via Travis CI and then mad
 * Clicking on thumbnail on a map, selects the image from the grid, but why?
 * Sort by file attributes and most common metadata properties
 * Service Worker should do the scanning of the image files and thumbnail creation
-* Use http://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
+* Use https://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
 * Use `electron.remote` to call stuff in the `mainWindow`
 * Or communicate via `open-url` event so that the React application works as a regular web site
 * Well the `open-url` did not do it, but `app.interceptHttpProtocol` shall be.

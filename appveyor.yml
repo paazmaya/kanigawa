@@ -8,7 +8,8 @@ platform:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
-  # Download http://www.exiv2.org/exiv2-0.25-win.zip and make available in "Path"
+  # Download exiv2 and make available in "Path"
+  # https://www.exiv2.org/builds/exiv2-0.27.1-msvc64.zip
   - npm install
 
 # Post-install test scripts.

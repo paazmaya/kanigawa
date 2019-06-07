@@ -11,7 +11,7 @@ How to reproduce with minimal working example.
  * Operating system:
  * Node.js:
  * npm:
- * Electron
+ * Electron:
  * kanigawa:
 
-Thank you and have some :cookie:.
+Thank you and have a :cookie:.
