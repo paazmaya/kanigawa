@@ -103,7 +103,7 @@ There is a special `gh-pages` branch which is updated via Travis CI and then mad
 
 ## Features or actually a ROADMAP since nothing is implemented yet
 
-* Open a directory recursively on the grid view
+* Open a directory on the grid view
 * Drag image to a location on a map
 * Existing geotagged images in the current grid will be shown as thumbnail markers on the map
 * Image can be dragged on top of a thumbnail on the map, which places it at the same location
@@ -111,11 +111,9 @@ There is a special `gh-pages` branch which is updated via Travis CI and then mad
 * Clicking on thumbnail on a map, selects the image from the grid, but why?
 * Sort by file attributes and most common metadata properties
 * Service Worker should do the scanning of the image files and thumbnail creation
-* Use https://caniuse.com/#feat=css-grid for image grid, once a way for enabling it is found
-* Use `electron.remote` to call stuff in the `mainWindow`
-* Or communicate via `open-url` event so that the React application works as a regular web site
-* Well the `open-url` did not do it, but `app.interceptHttpProtocol` shall be.
-* Package with `electron-packager`
+* In order to keep React app able to run in a normal browser, communication via WebSockets, https://caniuse.com/#feat=websockets
+* Publish to GitHub https://www.electronforge.io/config/publishers/github
+* Automatic updates with https://github.com/electron/update-electron-app
 
 ### Map default centre location and zoom level
 

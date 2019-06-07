@@ -15,6 +15,7 @@ const fs = require('fs'),
 const electron = require('electron');
 const { app, BrowserWindow, dialog, ipcMain, Menu, nativeImage, protocol } = require('electron');
 const Store = require('electron-store');
+const WebSocket = require('ws');
 
 const {
 	getMetas,
@@ -29,30 +30,49 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 // Save some of the handy values in application storage as a JSON file
-const storage = new Store({
-  schema: {
-    windowBounds: {
-      type: 'object',
-      properties: {
-        width: {
-          type: 'number',
-          default: 800
-        },
-        height: {
-          type: 'number',
-          default: 600
+const initStore = () => {
+
+  return new Store({
+    schema: {
+      windowBounds: {
+        type: 'object',
+        properties: {
+          width: {
+            type: 'number',
+            default: 800
+          },
+          height: {
+            type: 'number',
+            default: 600
+          }
         }
       }
+    },
+    defaults: {
+      windowBounds: {
+        width: 800,
+        height: 600
+      }
     }
-  },
-  defaults: {
-    windowBounds: {
-      width: 800,
-      height: 600
-    }
-  }
-});
+  });
+};
+const storage = initStore();
 
+const iconImage = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
+
+// WS is used to communicate metadata changes
+const wss = new WebSocket.Server({
+  port: 1040
+});
+wss.on('connection', (w) => {
+  w.on( 'message' , (data) => {
+    console.log(data);
+  })
+  w.on('close', () => {
+    console.log("Closed");
+  })
+  w.send("Hello interface!");
+})
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -80,28 +100,14 @@ const openDialog = (win) => {
         metas.forEach((meta) => {
           // Somehow pass the meta to the window and React application..
           console.log(meta);
-          //win.webContents.send('image-meta', meta);
+          win.webContents.send('image-meta', meta);
         });
       });
     });
   });
 };
 
-const img = nativeImage.createFromPath(path.join(__dirname, 'icon.png'));
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-
-const createWindow = () => {
-  const { width, height } = storage.get('windowBounds');
-
-  // Create the browser window with earlier window size
-  mainWindow = new BrowserWindow({
-    icon: img,
-    width: width,
-    height: height,
-    center: true
-  });
+const createMenu = (win) => {
 
   const template = [
     // { role: 'appMenu' }
@@ -131,10 +137,25 @@ const createWindow = () => {
         {
           label: 'Open directory',
           click () {
-            openDialog(mainWindow);
+            openDialog(win);
           }
         },
         process.platform === 'darwin' ? { role: 'close' } : { role: 'quit' }
+      ]
+    },
+    // { role: 'viewMenu' }
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forcereload' },
+        { role: 'toggledevtools' },
+        { type: 'separator' },
+        { role: 'resetzoom' },
+        { role: 'zoomin' },
+        { role: 'zoomout' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
       ]
     },
     {
@@ -143,7 +164,7 @@ const createWindow = () => {
         {
           label: 'Learn More',
           click () {
-            electron.shell.openExternalSync('https://espoo.kobujutsu.fi');
+            electron.shell.openExternalSync('https://github.com/paazmaya/kanigawa');
           }
         }
       ]
@@ -152,9 +173,30 @@ const createWindow = () => {
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
+};
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+
+const createWindow = () => {
+  const { width, height } = storage.get('windowBounds');
+
+  // Create the browser window with earlier window size
+  mainWindow = new BrowserWindow({
+    icon: iconImage,
+    width: width,
+    height: height,
+    center: true
+  });
+
+  const ses = mainWindow.webContents.session;
+  console.log('ses.getUserAgent()', ses.getUserAgent());
+
+  createMenu(mainWindow);
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/build/index.html`);
+  //mainWindow.loadURL(`file://${__dirname}/build/index.html`);
+  mainWindow.loadFile(`build/index.html`);
 
   webContents = mainWindow.webContents;
 
@@ -167,10 +209,7 @@ const createWindow = () => {
   })
 
   webContents.on('did-finish-load', function () {
-    webContents.send('ping', {
-      some: 'whoooooooh!'
-    });
-
+    webContents.send('ping', 'whoooooooh!');
   });
 
   // Emitted when the window is closed.

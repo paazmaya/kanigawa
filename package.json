@@ -51,7 +51,8 @@
     "electron": "5.0.2",
     "electron-squirrel-startup": "1.0.0",
     "electron-store": "^3.2.0",
-    "is-image": "3.0.0"
+    "is-image": "3.0.0",
+    "ws": "7.0.0"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js' --html build/treemap.html",

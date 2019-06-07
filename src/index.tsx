@@ -25,3 +25,11 @@ ReactDOM.render(<AppStore />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+const socket = new WebSocket("ws://localhost:1040");
+socket.onmessage = function(event) {
+  console.log(event.data);
+};
+socket.onopen = function() {
+  socket.send('Hello server!');
+};
