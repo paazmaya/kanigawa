@@ -26,12 +26,19 @@ const initialState:State = {
   }
 };
 
-const logger = (store:Store<State>) => next => action => {
-  console.log("current state", store.getState());
-  return next(action);
+const socket = new WebSocket('ws://localhost:1040');
+socket.onmessage = function(event) {
+  console.log(event.data);
+};
+socket.onopen = function() {
+  socket.send('Hello server!');
+};
+const socketer = (store:Store<State>) => (next: Function) => (action: Function) => {
+  next(action);
+  socket.send(JSON.stringify(store.getState(), null, ' '));
 };
 
-const middlewares = applyMiddleware(logger, connect ? connect(initialState) : null);
+const middlewares = applyMiddleware(socketer, connect ? connect(initialState) : undefined);
 
 
 const store:Store<State> = createStore(initialState, middlewares);

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App';
+import Map from './Map';
 
 const viewPort = {
   center: [22, 22],
@@ -16,6 +16,6 @@ const viewPort = {
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App viewPort={viewPort} />, div);
+  ReactDOM.render(<Map viewport={viewPort} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

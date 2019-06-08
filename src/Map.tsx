@@ -51,11 +51,16 @@ const Map: React.SFC<MapProps> = (props) => {
     hereOpts.app_code = hData.hereCode as string;
   }
 
+  const onViewportChanged = (event) => {
+    console.log('event', event);
+    props.updateViewport(event);
+  };
+
   return (
     <div className="map-section">
       <LMap
         viewport={props.viewport}
-        onViewportChanged={props.updateViewport}
+        onViewportChanged={onViewportChanged}
         className="imagemap">
         <LayersControl position="topright">
           <BaseLayer checked name="OpenStreetMap">

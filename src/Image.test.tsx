@@ -7,15 +7,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './App';
-
-const viewPort = {
-  center: [22, 22],
-  zoom: 5
-};
+import Image from './Image';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App viewPort={viewPort} />, div);
+  ReactDOM.render(<Image url="hoplaa" key="1" />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -10,7 +10,7 @@ import Image, {ImageProps} from './Image';
 import './ImageGrid.css';
 
 export interface ImageGridProps {
-  images: ImageProps[]
+  images?: ImageProps[]
 }
 
 const ImageGrid: React.SFC<ImageGridProps> = (props) => {
@@ -21,6 +21,10 @@ const ImageGrid: React.SFC<ImageGridProps> = (props) => {
       ))
     }</div>
   );
+};
+
+ImageGrid.defaultProps = {
+  images: []
 };
 
 export default ImageGrid;

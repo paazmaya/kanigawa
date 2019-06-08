@@ -65,14 +65,14 @@ const wss = new WebSocket.Server({
   port: 1040
 });
 wss.on('connection', (w) => {
-  w.on( 'message' , (data) => {
+  w.on('message', (data) => {
     console.log(data);
-  })
+  });
   w.on('close', () => {
     console.log("Closed");
-  })
+  });
   w.send("Hello interface!");
-})
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
