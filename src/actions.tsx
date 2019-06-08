@@ -7,7 +7,7 @@
 import {State, Store} from './store';
 
 const actions = (store:Store<State>) => ({
-  updateViewport: (state:State) => ({ viewport: state.viewport })
+  updateViewport: (state:State, args) => ({viewport: args})
 });
 
 export default actions;

@@ -25,4 +25,8 @@ const Image: React.SFC<ImageProps> = (props) => {
   );
 };
 
+Image.defaultProps = {
+  color: 'rebeccapurple'
+};
+
 export default Image;
