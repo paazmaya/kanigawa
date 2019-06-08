@@ -5,9 +5,7 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import React, {
-  PureComponent
-} from 'react';
+import React from 'react';
 import './Image.css';
 
 export interface ImageProps {
@@ -16,18 +14,15 @@ export interface ImageProps {
   color?: string
 }
 
-class Image extends PureComponent<ImageProps> {
-  render () {
-    return (
-      <figure className="image-grid-item" style={{backgroundColor: this.props.color}}>
-        <img className="image-grid-image"
-          src={ this.props.url }
-          alt={ this.props.url }
-        />
-      </figure>
-    );
-  }
-}
-
+const Image: React.SFC<ImageProps> = (props) => {
+  return (
+    <figure className="image-grid-item" style={{backgroundColor: props.color}}>
+      <img className="image-grid-image"
+        src={ props.url }
+        alt={ props.url }
+      />
+    </figure>
+  );
+};
 
 export default Image;

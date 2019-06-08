@@ -4,11 +4,10 @@
  * Licensed under the MIT license
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
-//import {State, Store} from './store';
+import {State, Store} from './store';
 
-const actions = store => ({
-  increment: state => ({ zoomLevel: state.zoomLevel + 1 }),
-  decrement: state => ({ zoomLevel: state.zoomLevel - 1 })
+const actions = (store:Store<State>) => ({
+  updateViewport: (state:State) => ({ viewport: state.viewport })
 });
 
 export default actions;

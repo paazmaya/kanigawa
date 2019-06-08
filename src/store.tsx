@@ -5,23 +5,35 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-import createStore from "redux-zero";
+import createStore from 'redux-zero';
+import { applyMiddleware } from 'redux-zero/middleware';
+import { connect } from "redux-zero/devtools";
 import ZeroStore from 'redux-zero/interfaces/Store';
+import {Viewport} from './Map';
 
 export interface Store<T extends object> extends ZeroStore<T> {
 
 }
 
 export interface State {
-  center: [number, number],
-  zoomLevel: number
+  viewport: Viewport
 }
 
 const initialState:State = {
-  center: [60.2, 24.91],
-  zoomLevel: 8
+  viewport: {
+    center: [60.2, 24.91],
+    zoom: 8
+  }
 };
 
-const store:Store<State> = createStore(initialState);
+const logger = (store:Store<State>) => next => action => {
+  console.log("current state", store.getState());
+  return next(action);
+};
+
+const middlewares = applyMiddleware(logger, connect ? connect(initialState) : null);
+
+
+const store:Store<State> = createStore(initialState, middlewares);
 
 export default store;
