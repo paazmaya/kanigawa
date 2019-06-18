@@ -69,9 +69,9 @@ wss.on('connection', (w) => {
     console.log(data);
   });
   w.on('close', () => {
-    console.log("Closed");
+    console.log('Closed');
   });
-  w.send("Hello interface!");
+  w.send('Hello interface!');
 });
 
 // Keep a global reference of the window object, if you don't, the window will

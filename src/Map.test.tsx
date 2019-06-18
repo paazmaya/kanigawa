@@ -7,9 +7,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Map from './Map';
+import Map, {MapProps} from './Map';
 
-const viewPort = {
+const viewPort:MapProps = {
   center: [22, 22],
   zoom: 5
 };

@@ -18,12 +18,12 @@ import './Map.css';
 // https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/layers-control.js
 const { BaseLayer } = LayersControl;
 
-export type Viewport = {
+export interface Viewport {
   center: [number, number],
   zoom: number,
 }
 
-export type MapProps = {
+export interface MapProps {
   viewport: Viewport,
   updateViewport (viewport: Viewport): void
 }
