@@ -101,6 +101,9 @@ which can be seen with `chrome --js-flags="--help"` command.
 
 There is a special `gh-pages` branch which is updated via Travis CI and then made available as [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/).
 
+The generated site only supports fresh browsers and cannot be operated with such legacy browsers,
+such as Internet Explorer.
+
 ## Features or actually a ROADMAP since nothing is implemented yet
 
 * Open a directory on the grid view
@@ -141,3 +144,5 @@ Should I mention that once a proper interaction model is found, it needs to work
 Licensed under [the MIT license](LICENSE).
 
 Copyright (c) [Juga Paazmaya](https://paazmaya.fi) <paazmaya@yahoo.com>
+
+Contributions are licensed via [Developer Certificate of Origin](https://developercertificate.org/).
