@@ -1,4 +1,4 @@
-# https://docs.travis-ci.com/user/sonarcloud/
+# https://docs.travis-ci.com/user/sonarcloud/ requires to use trusty
 # https://github.com/travis-ci/apt-package-safelist/blob/master/ubuntu-trusty
 dist: trusty
 
@@ -17,7 +17,7 @@ node_js:
   - "10"
 
 script:
-  - sonar-scanner
+  - sonar-scanner -Dsonar.projectVersion=$TRAVIS_COMMIT
   - npm test
 matrix:
   fast_finish: true
