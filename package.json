@@ -40,7 +40,8 @@
     "react-scripts": "3.0.1",
     "redux-zero": "5.0.4",
     "source-map-explorer": "2.0.1",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "snyk": "^1.226.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.39",
@@ -63,7 +64,9 @@
     "electron:start": "electron-forge start",
     "electron:package": "electron-forge package",
     "electron:make": "electron-forge make",
-    "electron:publish": "electron-forge publish"
+    "electron:publish": "electron-forge publish",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -105,5 +108,6 @@
     "last 2 electron version",
     "last 2 firefox version",
     "last 2 safari version"
-  ]
+  ],
+  "snyk": true
 }
