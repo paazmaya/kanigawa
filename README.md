@@ -74,14 +74,14 @@ the property `devDependencies` are those needed for Electron based standalone ap
 
 ## Scripts available via Create React App boilerplate
 
-The [React](https://reactjs.org/) based frontend application has been initialised with [Create React App](https://facebook.github.io/create-react-app/) which provided the following commands:
+The [React](https://reactjs.org/) based frontend application has been initialised with [Create React App](https://create-react-app.dev/) which provided the following commands:
 
 * `npm start`: Runs the app in the development mode, available at [http://localhost:3000](http://localhost:3000)
 * `npm test`: Run [Jest](https://jestjs.io/) based unit tests
 * `npm run build`: Creates production bundle to the `build` folder
 * `npm run eject`: One way exit operation to see what is underneath Create React App generated boilerplate
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Create React App documentation](https://create-react-app.dev/docs/getting-started).
 
 ## Scripts available via Electron Forge boilerplate
 
