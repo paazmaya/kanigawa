@@ -5,7 +5,7 @@
  * Copyright (c) Juga Paazmaya <paazmaya@yahoo.com> (https://paazmaya.fi)
  */
 
-'use strict';
+
 
 
 const fs = require('fs'),
