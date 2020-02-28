@@ -26,6 +26,8 @@ decided to go and solve the problem while also making myself to learn about Elec
 Surely there are other tools trying to achieve this functionality but they usually lack
 _something_ that I deem valuable.
 
+Since the beginning of this project, Picasa has already ceased to exists.
+
 ## Background for the project name
 
 As I have done now for few of my recent projects, the names are trying to give a tribute to
@@ -72,6 +74,14 @@ The file called `package.json` lists the 3rd party libraries and tools, of which
 the property `dependencies` are the ones needed for the frontend React application and
 the property `devDependencies` are those needed for Electron based standalone application.
 
+It is also possible to run the too,l without Electron, just for testing purposes,
+by running these two commands in separate terminals:
+
+```sh
+node websocket-server-for-testing-in-browser.js
+npm start
+```
+
 ## Scripts available via Create React App boilerplate
 
 The [React](https://reactjs.org/) based frontend application has been initialised with [Create React App](https://create-react-app.dev/) which provided the following commands:
@@ -80,6 +90,7 @@ The [React](https://reactjs.org/) based frontend application has been initialise
 * `npm test`: Run [Jest](https://jestjs.io/) based unit tests
 * `npm run build`: Creates production bundle to the `build` folder
 * `npm run eject`: One way exit operation to see what is underneath Create React App generated boilerplate
+* `npm run deploy`: Deploy frontend to GitHub Pages at [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/)
 
 You can learn more in the [Create React App documentation](https://create-react-app.dev/docs/getting-started).
 
@@ -103,6 +114,8 @@ There is a special `gh-pages` branch which is updated via Travis CI and then mad
 
 The generated site only supports fresh browsers and cannot be operated with such legacy browsers,
 such as Internet Explorer.
+
+The frontend of the site relies on the use of [WebSockets](https://html.spec.whatwg.org/multipage/web-sockets.html) for communication with the backend.
 
 ## Features or actually a ROADMAP since nothing is implemented yet
 
