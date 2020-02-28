@@ -11,7 +11,7 @@ import {
 } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
-import './Marker.css';
+import './MapMarker.css';
 
 interface MarkerProps {
   position: [number, number],

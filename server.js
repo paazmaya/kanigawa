@@ -175,9 +175,16 @@ const createMenu = (win) => {
   Menu.setApplicationMenu(menu);
 };
 
+const onResize = () => {
+  // The event doesn't pass us the window size, so we call the `getBounds` method which returns an object with
+  // the height, width, and x and y coordinates.
+  const { width, height } = mainWindow.getBounds();
+  // Now that we have them, save them using the `set` method.
+  storage.set('windowBounds', { width, height });
+};
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-
 const createWindow = () => {
   const { width, height } = storage.get('windowBounds');
 
@@ -222,13 +229,7 @@ const createWindow = () => {
 
   // The BrowserWindow class extends the node.js core EventEmitter class, so we use that API
   // to listen to events on the BrowserWindow. The resize event is emitted when the window size changes.
-  mainWindow.on('resize', () => {
-    // The event doesn't pass us the window size, so we call the `getBounds` method which returns an object with
-    // the height, width, and x and y coordinates.
-    const { width, height } = mainWindow.getBounds();
-    // Now that we have them, save them using the `set` method.
-    storage.set('windowBounds', { width, height });
-  });
+  mainWindow.on('resize', onResize);
 };
 
 // This method will be called when Electron has finished

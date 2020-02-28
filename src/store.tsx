@@ -33,9 +33,9 @@ socket.onmessage = function(event) {
 socket.onopen = function() {
   socket.send('Hello server!');
 };
-const socketer = (store:Store<State>) => (next: Function) => (action: Function) => {
+const socketer = (storage:Store<State>) => (next: Function) => (action: Function) => {
   next(action);
-  socket.send(JSON.stringify(store.getState(), null, ' '));
+  socket.send(JSON.stringify(storage.getState(), null, ' '));
 };
 
 const middlewares = applyMiddleware(socketer, connect ? connect(initialState) : undefined);

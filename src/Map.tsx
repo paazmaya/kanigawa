@@ -11,7 +11,7 @@ import {
   Map as LMap, TileLayer, LayersControl
 } from 'react-leaflet';
 
-import Marker from './Marker';
+import MapMarker from './MapMarker';
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 
@@ -25,7 +25,7 @@ export interface Viewport {
 
 export interface MapProps {
   viewport: Viewport,
-  updateViewport (viewport: Viewport): void
+  updateViewport (viewport: Viewport)?: void
 }
 
 const Map: React.SFC<MapProps> = (props) => {
@@ -82,7 +82,7 @@ const Map: React.SFC<MapProps> = (props) => {
               url={ hereUrlBase + 'terrain.day' + hereUrlEnd }/>
           </BaseLayer>
         </LayersControl>
-        <Marker position={ props.viewport.center } />
+        <MapMarker position={ props.viewport.center } />
       </LMap>
     </div>
   );
