@@ -18,8 +18,8 @@ node_js:
   - "12"
 
 script:
+  - npm test 
   - sonar-scanner -Dsonar.projectVersion=$TRAVIS_COMMIT -Dsonar.links.scm=https://github.com/paazmaya/kanigawa/tree/$TRAVIS_COMMIT
-  - npm test
 matrix:
   fast_finish: true
 

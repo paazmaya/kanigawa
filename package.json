@@ -58,7 +58,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js' --html build/treemap.html",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "electron:start": "electron-forge start",
     "electron:package": "electron-forge package",
