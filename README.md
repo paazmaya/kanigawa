@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
 [![Windows build status](https://ci.appveyor.com/api/projects/status/wls3dplcr1vvqwa6/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/kanigawa/branch/master)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=kanigawa&metric=sqale_index)](https://sonarcloud.io/dashboard?id=kanigawa)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_kanigawa&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_kanigawa)
 [![dependencies Status](https://david-dm.org/paazmaya/kanigawa/status.svg)](https://david-dm.org/paazmaya/kanigawa)
 
 ![kanigawa project logo](icon.png)

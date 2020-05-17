@@ -1,4 +1,3 @@
-# https://docs.travis-ci.com/user/sonarcloud/ requires to use trusty
 # https://github.com/travis-ci/apt-package-safelist/blob/master/ubuntu-trusty
 dist: trusty
 
@@ -7,10 +6,6 @@ addons:
     packages:
       - exiv2
       - libexiv2-dev
-  sonarcloud:
-    organization: "paazmaya-github"
-    token:
-      secure: $SONAR_TOKEN
 
 language: node_js
 node_js:
@@ -18,8 +13,7 @@ node_js:
   - "12"
 
 script:
-  - npm test 
-  - sonar-scanner -Dsonar.projectVersion=$TRAVIS_COMMIT -Dsonar.links.scm=https://github.com/paazmaya/kanigawa/tree/$TRAVIS_COMMIT
+  - npm test
 matrix:
   fast_finish: true
 
