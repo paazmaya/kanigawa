@@ -10,11 +10,10 @@ addons:
 language: node_js
 node_js:
   - "10"
-  - "12"
 
 script:
   - npm test
-matrix:
+jobs:
   fast_finish: true
 
 # Deploy to GitHub Pages
