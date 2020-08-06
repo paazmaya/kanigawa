@@ -9,7 +9,7 @@ import React from 'react';
 import { connect } from 'redux-zero/react';
 //import { BoundActions } from 'redux-zero/types/Actions';
 
-import Map, {MapProps, Viewport} from './Map';
+import Map, {MapProps} from './Map';
 import ImageGrid from './ImageGrid';
 import './App.css';
 import actions from './actions';

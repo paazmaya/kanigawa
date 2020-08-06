@@ -25,7 +25,7 @@ export interface Viewport {
 
 export interface MapProps {
   viewport: Viewport,
-  updateViewport (viewport: Viewport)?: void
+  updateViewport? (viewport: Viewport): void
 }
 
 const Map: React.SFC<MapProps> = (props) => {
