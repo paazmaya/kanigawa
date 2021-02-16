@@ -1,0 +1,24 @@
+name: Node.js v14 CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Exiv2
+      run: |
+        apt-get update
+        apt-get install -y exiv2 libexiv2-dev
+
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js v14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+    - run: npm ci
+    - run: npm run lint
+    - run: npm test

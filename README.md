@@ -2,8 +2,6 @@
 
 > Electron based desktop application for setting geotags for images
 
-[![Build Status](https://travis-ci.org/paazmaya/kanigawa.svg)](https://travis-ci.org/paazmaya/kanigawa)
-[![Windows build status](https://ci.appveyor.com/api/projects/status/wls3dplcr1vvqwa6/branch/master?svg=true)](https://ci.appveyor.com/project/paazmaya/kanigawa/branch/master)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_kanigawa&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_kanigawa)
 [![dependencies Status](https://david-dm.org/paazmaya/kanigawa/status.svg)](https://david-dm.org/paazmaya/kanigawa)
 
@@ -110,7 +108,7 @@ which can be seen with `chrome --js-flags="--help"` command.
 
 ## Deployed to [GitHub Pages](https://pages.github.com/)
 
-There is a special `gh-pages` branch which is updated via Travis CI and then made available as [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/).
+There is a special `gh-pages` branch which is updated via CI and then made available as [paazmaya.github.io/kanigawa](https://paazmaya.github.io/kanigawa/).
 
 The generated site only supports fresh browsers and cannot be operated with such legacy browsers,
 such as Internet Explorer.
