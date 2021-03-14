@@ -148,7 +148,7 @@ Should I mention that once a proper interaction model is found, it needs to work
 
 ## Version history
 
-* Nothing yet..
+[Changes happening across different versions and upcoming changes are tracked in the `CHANGELOG.md` file.](CHANGELOG.md)
 
 ## License
 
