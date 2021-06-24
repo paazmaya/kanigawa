@@ -48,7 +48,7 @@ npm run build
 npm run electron:start
 ```
 
-Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `10.13.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
+Please note that the minimum supported version of [Node.js](https://nodejs.org/en/) is `14.15.0`, which is [the active Long Term Support (LTS) version](https://github.com/nodejs/Release#release-schedule).
 
 **Later** it should be possible to install this application globally and start it wherever
 it is common in the given platform:
