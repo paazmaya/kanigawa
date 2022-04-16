@@ -3,7 +3,7 @@
 > Electron based desktop application for setting geotags for images
 
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_kanigawa&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_kanigawa)
-[![dependencies Status](https://david-dm.org/paazmaya/kanigawa/status.svg)](https://david-dm.org/paazmaya/kanigawa)
+
 
 ![kanigawa project logo](icon.png)
 
