@@ -34,7 +34,7 @@
     "@types/react-dom": "16.9.14",
     "@types/react-leaflet": "2.8.2",
     "gh-pages": "2.2.0",
-    "leaflet": "1.7.1",
+    "leaflet": "1.8.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-leaflet": "2.8.0",
@@ -44,8 +44,8 @@
     "typescript": "3.9.10"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/cli": "6.0.0-beta.63",
+    "@electron-forge/maker-deb": "6.0.0-beta.63",
     "@electron-forge/maker-rpm": "6.0.0-beta.63",
     "@electron-forge/maker-squirrel": "6.0.0-beta.63",
     "@electron-forge/maker-zip": "6.0.0-beta.63",
