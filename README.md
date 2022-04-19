@@ -2,8 +2,8 @@
 
 > Electron based desktop application for setting geotags for images
 
+[![Node.js v14 CI](https://github.com/paazmaya/kanigawa/actions/workflows/linting-and-unit-testing.yml/badge.svg)](https://github.com/paazmaya/kanigawa/actions/workflows/linting-and-unit-testing.yml)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=paazmaya_kanigawa&metric=code_smells)](https://sonarcloud.io/dashboard?id=paazmaya_kanigawa)
-
 
 ![kanigawa project logo](icon.png)
 
