@@ -31,7 +31,7 @@
     "@types/leaflet": "1.7.9",
     "@types/node": "13.13.52",
     "@types/react": "16.14.25",
-    "@types/react-dom": "16.9.14",
+    "@types/react-dom": "16.9.15",
     "@types/react-leaflet": "2.8.2",
     "gh-pages": "2.2.0",
     "leaflet": "1.8.0",
